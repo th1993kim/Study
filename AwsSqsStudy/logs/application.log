@@ -1,0 +1,275 @@
+2024-06-11 01:33:38 - o.c.a.AwsSqsStudyApplication - Starting AwsSqsStudyApplication using Java 21.0.2 with PID 36040 (C:\bootWorkSpace\AwsSqsStudy\build\classes\java\main started by KIMTAEHYUN in C:\bootWorkSpace\AwsSqsStudy)
+2024-06-11 01:33:38 - o.c.a.AwsSqsStudyApplication - Running with Spring Boot v3.3.0, Spring v6.1.8
+2024-06-11 01:33:38 - o.c.a.AwsSqsStudyApplication - No active profile set, falling back to 1 default profile: "default"
+2024-06-11 01:33:39 - o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2024-06-11 01:33:39 - o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-06-11 01:33:39 - o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-06-11 01:33:39 - o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.24]
+2024-06-11 01:33:39 - o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-06-11 01:33:39 - o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1225 ms
+2024-06-11 01:33:40 - o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-06-11 01:33:40 - o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2024-06-11 01:33:41 - i.a.c.s.l.AbstractMessageListenerContainer - Container io.awspring.cloud.sqs.sqsListenerEndpointContainer#0 started
+2024-06-11 01:33:41 - o.c.a.AwsSqsStudyApplication - Started AwsSqsStudyApplication in 3.834 seconds (process running for 5.019)
+2024-06-11 01:33:41 - o.c.a.m.consumer.SqsListenerConsumer - >>>> 소비자 메시지 : SimpleMessage[pk=1, name=test1, age=15, score=300] 
+2024-06-11 01:33:41 - o.c.a.m.consumer.SqsListenerConsumer - >>>> 소비자 메시지 : SimpleMessage[pk=3, name=test3, age=35, score=700] 
+2024-06-11 01:33:41 - o.c.a.m.consumer.SqsListenerConsumer - >>>> 소비자 메시지 : SimpleMessage[pk=2, name=test2, age=25, score=500] 
+2024-06-11 01:33:41 - o.c.a.m.consumer.SqsListenerConsumer - >>>> 소비자 메시지 : SimpleMessage[pk=2, name=test2, age=25, score=500] 
+2024-06-11 01:33:41 - o.c.a.m.consumer.SqsListenerConsumer - >>>> 소비자 메시지 : SimpleMessage[pk=1, name=test1, age=15, score=300] 
+2024-06-11 01:33:41 - o.c.a.m.consumer.SqsListenerConsumer - >>>> 소비자 메시지 : SimpleMessage[pk=3, name=test3, age=35, score=700] 
+2024-06-11 01:33:59 - o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-06-11 01:33:59 - o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-06-11 01:33:59 - o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2024-06-11 01:34:00 - o.c.a.m.c.SimpleMessageController - >>>>>> 컨트롤러 메시지 전송 완료
+2024-06-11 01:34:00 - o.c.a.m.consumer.SqsListenerConsumer - >>>> 소비자 메시지 : SimpleMessage[pk=1, name=test1, age=15, score=300] 
+2024-06-11 01:34:00 - o.c.a.m.p.SpringIntegrationSqsProducer - >>>>>> 메시지 전송 성공 전송량: 3
+2024-06-11 01:34:00 - o.c.a.m.consumer.SqsListenerConsumer - >>>> 소비자 메시지 : SimpleMessage[pk=3, name=test3, age=35, score=700] 
+2024-06-11 01:34:00 - o.c.a.m.consumer.SqsListenerConsumer - >>>> 소비자 메시지 : SimpleMessage[pk=2, name=test2, age=25, score=500] 
+2024-06-11 01:42:20 - i.a.c.s.l.AbstractMessageListenerContainer - Container io.awspring.cloud.sqs.sqsListenerEndpointContainer#0 stopped
+2024-06-11 01:57:15 - o.c.a.AwsSqsStudyApplication - Starting AwsSqsStudyApplication using Java 21.0.2 with PID 1420 (C:\bootWorkSpace\AwsSqsStudy\build\classes\java\main started by KIMTAEHYUN in C:\bootWorkSpace\AwsSqsStudy)
+2024-06-11 01:57:15 - o.c.a.AwsSqsStudyApplication - Running with Spring Boot v3.3.0, Spring v6.1.8
+2024-06-11 01:57:15 - o.c.a.AwsSqsStudyApplication - No active profile set, falling back to 1 default profile: "default"
+2024-06-11 01:57:16 - o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2024-06-11 01:57:16 - o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-06-11 01:57:16 - o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-06-11 01:57:16 - o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.24]
+2024-06-11 01:57:16 - o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-06-11 01:57:16 - o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1290 ms
+2024-06-11 01:57:17 - o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-06-11 01:57:17 - o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2024-06-11 01:57:18 - i.a.c.s.l.AbstractMessageListenerContainer - Container io.awspring.cloud.sqs.sqsListenerEndpointContainer#0 started
+2024-06-11 01:57:18 - o.c.a.AwsSqsStudyApplication - Started AwsSqsStudyApplication in 3.946 seconds (process running for 5.199)
+2024-06-11 01:57:36 - o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-06-11 01:57:36 - o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-06-11 01:57:36 - o.s.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+2024-06-11 01:57:36 - o.c.a.m.c.SimpleMessageController - >>>>>> 컨트롤러 메시지 전송 완료
+2024-06-11 01:57:36 - o.c.a.m.p.SpringIntegrationSqsProducer - >>>>>> 메시지 전송 성공 전송량: 3
+2024-06-11 01:57:36 - o.c.a.m.consumer.SqsListenerConsumer - >>>> 소비자 메시지 : SimpleMessage[pk=3, name=test3, age=35, score=700] 
+2024-06-11 01:57:36 - o.c.a.m.consumer.SqsListenerConsumer - >>>> 소비자 메시지 : SimpleMessage[pk=1, name=test1, age=15, score=300] 
+2024-06-11 01:57:36 - o.c.a.m.consumer.SqsListenerConsumer - >>>> 소비자 메시지 : SimpleMessage[pk=2, name=test2, age=25, score=500] 
+2024-06-11 01:57:48 - o.c.a.m.c.SimpleMessageController - >>>>>> 컨트롤러 메시지 전송 완료
+2024-06-11 01:57:48 - o.c.a.m.p.SpringIntegrationSqsProducer - >>>>>> 메시지 전송 성공 전송량: 3
+2024-06-11 01:57:55 - o.c.a.m.consumer.SqsListenerConsumer - >>>> 소비자 메시지 : SimpleMessage[pk=1, name=test1, age=15, score=300] 
+2024-06-11 01:58:04 - o.c.a.m.consumer.SqsListenerConsumer - >>>> 소비자 메시지 : SimpleMessage[pk=3, name=test3, age=35, score=700] 
+2024-06-11 01:58:05 - o.c.a.m.consumer.SqsListenerConsumer - >>>> 소비자 메시지 : SimpleMessage[pk=2, name=test2, age=25, score=500] 
+2024-06-11 01:58:15 - i.a.c.s.l.AbstractMessageListenerContainer - Container io.awspring.cloud.sqs.sqsListenerEndpointContainer#0 stopped
+2024-06-11 01:58:24 - o.c.a.AwsSqsStudyApplication - Starting AwsSqsStudyApplication using Java 21.0.2 with PID 59528 (C:\bootWorkSpace\AwsSqsStudy\build\classes\java\main started by KIMTAEHYUN in C:\bootWorkSpace\AwsSqsStudy)
+2024-06-11 01:58:24 - o.c.a.AwsSqsStudyApplication - Running with Spring Boot v3.3.0, Spring v6.1.8
+2024-06-11 01:58:24 - o.c.a.AwsSqsStudyApplication - No active profile set, falling back to 1 default profile: "default"
+2024-06-11 01:58:26 - o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2024-06-11 01:58:26 - o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-06-11 01:58:26 - o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-06-11 01:58:26 - o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.24]
+2024-06-11 01:58:26 - o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-06-11 01:58:26 - o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1195 ms
+2024-06-11 01:58:27 - o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-06-11 01:58:27 - o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2024-06-11 01:58:28 - i.a.c.s.l.AbstractMessageListenerContainer - Container io.awspring.cloud.sqs.sqsListenerEndpointContainer#0 started
+2024-06-11 01:58:28 - o.c.a.AwsSqsStudyApplication - Started AwsSqsStudyApplication in 3.895 seconds (process running for 5.103)
+2024-06-11 01:58:34 - o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-06-11 01:58:34 - o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-06-11 01:58:34 - o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2024-06-11 01:58:34 - o.c.a.m.c.SimpleMessageController - >>>>>> 컨트롤러 메시지 전송 완료
+2024-06-11 01:58:34 - o.c.a.m.p.SpringIntegrationSqsProducer - >>>>>> 메시지 전송 성공 전송량: 3
+2024-06-11 01:58:41 - o.c.a.m.consumer.SqsListenerConsumer - >>>> 소비자 메시지 : SimpleMessage[pk=1, name=test1, age=15, score=300] 
+2024-06-11 01:58:42 - o.c.a.m.consumer.SqsListenerConsumer - >>>> 소비자 메시지 : SimpleMessage[pk=3, name=test3, age=35, score=700] 
+2024-06-11 01:58:44 - o.c.a.m.consumer.SqsListenerConsumer - >>>> 소비자 메시지 : SimpleMessage[pk=2, name=test2, age=25, score=500] 
+2024-06-11 01:58:54 - i.a.c.s.l.AbstractMessageListenerContainer - Container io.awspring.cloud.sqs.sqsListenerEndpointContainer#0 stopped
+2024-06-11 01:59:00 - o.c.a.AwsSqsStudyApplication - Starting AwsSqsStudyApplication using Java 21.0.2 with PID 17436 (C:\bootWorkSpace\AwsSqsStudy\build\classes\java\main started by KIMTAEHYUN in C:\bootWorkSpace\AwsSqsStudy)
+2024-06-11 01:59:00 - o.c.a.AwsSqsStudyApplication - Running with Spring Boot v3.3.0, Spring v6.1.8
+2024-06-11 01:59:00 - o.c.a.AwsSqsStudyApplication - No active profile set, falling back to 1 default profile: "default"
+2024-06-11 01:59:01 - o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2024-06-11 01:59:01 - o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-06-11 01:59:01 - o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-06-11 01:59:01 - o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.24]
+2024-06-11 01:59:01 - o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-06-11 01:59:01 - o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1193 ms
+2024-06-11 01:59:03 - o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: java.lang.IllegalArgumentException: messagesPerPoll should be less than or equal to maxConcurrentMessages. Values provided: 3 and 1 respectively
+2024-06-11 01:59:05 - o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2024-06-11 01:59:05 - o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-06-11 01:59:05 - o.s.boot.SpringApplication - Application run failed
+java.lang.IllegalArgumentException: messagesPerPoll should be less than or equal to maxConcurrentMessages. Values provided: 3 and 1 respectively
+	at org.springframework.util.Assert.isTrue(Assert.java:111)
+	at io.awspring.cloud.sqs.listener.AbstractContainerOptions.<init>(AbstractContainerOptions.java:95)
+	at io.awspring.cloud.sqs.listener.SqsContainerOptions.<init>(SqsContainerOptions.java:54)
+	at io.awspring.cloud.sqs.listener.SqsContainerOptions$BuilderImpl.build(SqsContainerOptions.java:193)
+	at io.awspring.cloud.sqs.listener.SqsContainerOptions$BuilderImpl.build(SqsContainerOptions.java:116)
+	at io.awspring.cloud.sqs.config.AbstractMessageListenerContainerFactory.createContainer(AbstractMessageListenerContainerFactory.java:182)
+	at io.awspring.cloud.sqs.config.EndpointRegistrar.createContainerFor(EndpointRegistrar.java:234)
+	at io.awspring.cloud.sqs.config.EndpointRegistrar.process(EndpointRegistrar.java:225)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at io.awspring.cloud.sqs.config.EndpointRegistrar.afterSingletonsInstantiated(EndpointRegistrar.java:220)
+	at io.awspring.cloud.sqs.annotation.AbstractListenerAnnotationBeanPostProcessor.afterSingletonsInstantiated(AbstractListenerAnnotationBeanPostProcessor.java:256)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:986)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:962)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352)
+	at org.codingdreamtree.awssqsstudy.AwsSqsStudyApplication.main(AwsSqsStudyApplication.java:10)
+2024-06-11 01:59:28 - o.c.a.AwsSqsStudyApplication - Starting AwsSqsStudyApplication using Java 21.0.2 with PID 13448 (C:\bootWorkSpace\AwsSqsStudy\build\classes\java\main started by KIMTAEHYUN in C:\bootWorkSpace\AwsSqsStudy)
+2024-06-11 01:59:28 - o.c.a.AwsSqsStudyApplication - Running with Spring Boot v3.3.0, Spring v6.1.8
+2024-06-11 01:59:28 - o.c.a.AwsSqsStudyApplication - No active profile set, falling back to 1 default profile: "default"
+2024-06-11 01:59:29 - o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2024-06-11 01:59:29 - o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-06-11 01:59:29 - o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-06-11 01:59:29 - o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.24]
+2024-06-11 01:59:29 - o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-06-11 01:59:29 - o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1246 ms
+2024-06-11 01:59:30 - o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-06-11 01:59:30 - o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2024-06-11 01:59:31 - i.a.c.s.l.AbstractMessageListenerContainer - Container io.awspring.cloud.sqs.sqsListenerEndpointContainer#0 started
+2024-06-11 01:59:31 - o.c.a.AwsSqsStudyApplication - Started AwsSqsStudyApplication in 3.953 seconds (process running for 5.086)
+2024-06-11 01:59:35 - o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-06-11 01:59:35 - o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-06-11 01:59:35 - o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2024-06-11 01:59:35 - o.c.a.m.c.SimpleMessageController - >>>>>> 컨트롤러 메시지 전송 완료
+2024-06-11 01:59:35 - o.c.a.m.p.SpringIntegrationSqsProducer - >>>>>> 메시지 전송 성공 전송량: 3
+2024-06-11 01:59:40 - o.c.a.m.consumer.SqsListenerConsumer - >>>> 소비자 메시지 : SimpleMessage[pk=1, name=test1, age=15, score=300] 
+2024-06-11 01:59:40 - o.c.a.m.consumer.SqsListenerConsumer - >>>> 소비자 메시지 : SimpleMessage[pk=2, name=test2, age=25, score=500] 
+2024-06-11 01:59:40 - o.c.a.m.consumer.SqsListenerConsumer - >>>> 소비자 메시지 : SimpleMessage[pk=3, name=test3, age=35, score=700] 
+2024-06-11 01:59:50 - i.a.c.s.l.AbstractMessageListenerContainer - Container io.awspring.cloud.sqs.sqsListenerEndpointContainer#0 stopped
+2024-06-11 01:59:57 - o.c.a.AwsSqsStudyApplication - Starting AwsSqsStudyApplication using Java 21.0.2 with PID 20452 (C:\bootWorkSpace\AwsSqsStudy\build\classes\java\main started by KIMTAEHYUN in C:\bootWorkSpace\AwsSqsStudy)
+2024-06-11 01:59:57 - o.c.a.AwsSqsStudyApplication - Running with Spring Boot v3.3.0, Spring v6.1.8
+2024-06-11 01:59:57 - o.c.a.AwsSqsStudyApplication - No active profile set, falling back to 1 default profile: "default"
+2024-06-11 01:59:58 - o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2024-06-11 01:59:58 - o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-06-11 01:59:58 - o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-06-11 01:59:58 - o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.24]
+2024-06-11 01:59:58 - o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-06-11 01:59:58 - o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1233 ms
+2024-06-11 02:00:00 - o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-06-11 02:00:00 - o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2024-06-11 02:00:00 - i.a.c.s.l.AbstractMessageListenerContainer - Container io.awspring.cloud.sqs.sqsListenerEndpointContainer#0 started
+2024-06-11 02:00:00 - o.c.a.AwsSqsStudyApplication - Started AwsSqsStudyApplication in 3.878 seconds (process running for 4.989)
+2024-06-11 02:00:01 - o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-06-11 02:00:01 - o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-06-11 02:00:01 - o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2024-06-11 02:00:01 - o.c.a.m.c.SimpleMessageController - >>>>>> 컨트롤러 메시지 전송 완료
+2024-06-11 02:00:01 - o.c.a.m.p.SpringIntegrationSqsProducer - >>>>>> 메시지 전송 성공 전송량: 3
+2024-06-11 02:00:34 - o.c.a.m.consumer.SqsListenerConsumer - >>>> 소비자 메시지 : SimpleMessage[pk=3, name=test3, age=35, score=700] 
+2024-06-11 02:00:34 - o.c.a.m.consumer.SqsListenerConsumer - >>>> 소비자 메시지 : SimpleMessage[pk=1, name=test1, age=15, score=300] 
+2024-06-11 02:00:34 - o.c.a.m.consumer.SqsListenerConsumer - >>>> 소비자 메시지 : SimpleMessage[pk=2, name=test2, age=25, score=500] 
+2024-06-11 02:04:20 - i.a.c.s.l.AbstractMessageListenerContainer - Container io.awspring.cloud.sqs.sqsListenerEndpointContainer#0 stopped
+2024-06-11 02:08:15 - o.c.a.AwsSqsStudyApplication - Starting AwsSqsStudyApplication using Java 21.0.2 with PID 47228 (C:\bootWorkSpace\AwsSqsStudy\build\classes\java\main started by KIMTAEHYUN in C:\bootWorkSpace\AwsSqsStudy)
+2024-06-11 02:08:15 - o.c.a.AwsSqsStudyApplication - Running with Spring Boot v3.3.0, Spring v6.1.8
+2024-06-11 02:08:15 - o.c.a.AwsSqsStudyApplication - No active profile set, falling back to 1 default profile: "default"
+2024-06-11 02:08:16 - o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2024-06-11 02:08:16 - o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-06-11 02:08:16 - o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-06-11 02:08:16 - o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.24]
+2024-06-11 02:08:16 - o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-06-11 02:08:16 - o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1362 ms
+2024-06-11 02:08:18 - o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-06-11 02:08:18 - o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2024-06-11 02:08:18 - i.a.c.s.l.AbstractMessageListenerContainer - Container io.awspring.cloud.sqs.sqsListenerEndpointContainer#0 started
+2024-06-11 02:08:19 - o.c.a.AwsSqsStudyApplication - Started AwsSqsStudyApplication in 4.056 seconds (process running for 5.144)
+2024-06-11 02:08:50 - o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-06-11 02:08:50 - o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-06-11 02:08:50 - o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2024-06-11 02:08:50 - o.c.a.m.c.SimpleMessageController - >>>>>> 컨트롤러 메시지 전송 완료
+2024-06-11 02:08:51 - o.c.a.m.p.SpringIntegrationSqsProducer - >>>>>> 메시지 전송 성공 전송량: 3
+2024-06-11 02:08:51 - o.c.a.m.c.SqsMessageConfig$CustomMessageInterceptor - >>>>> collection Interceptor: [GenericMessage [payload=SimpleMessage[pk=3, name=test3, age=35, score=700], headers={Sqs_QueueAttributes=io.awspring.cloud.sqs.listener.QueueAttributes@133a6bb4, Sqs_QueueUrl=https://sqs.ap-northeast-2.amazonaws.com/975050251954/test-queue, AcknowledgementCallback=io.awspring.cloud.sqs.listener.acknowledgement.BatchingAcknowledgementProcessor@5ccd9be7, Sqs_ReceiptHandle=AQEBk61YX0BkrA5po5ndgtXSj60AT/OWtC1IV3OzU2uFFkIM9OoifKl4t9mI04V1WWdA3w9EK1ylVl2evF3SvUa3RNwv4w56mS62pCvChWEnvPP4pEOeD5T1qZhdKwbpEqfss7Ws+qrwOgXBizSPCt11bs4yPl+ncJJpMPk547bv9MKaIVmWFKBEooW+WjIc8ExCa/JP889QskJo3LN2C4QwW1yJ7hv1ijC8DB332w7YccHvAdRoVhr3fORYwuWAoksz4q/Dq0cwTFCqK+EcX9y/S9eYchg0RpqPlX4TQ0jEmNWzJdkNiaf64oBQ/xcNjQYm8ADEE3g9M4EcaPvOH7bny+5OYhhczU+YjXDvc4GyY5QCMir4l//2sA4Cz+y066slBTe+4K8U/PP2WShCwGPYPg==, Sqs_ReceivedAt=2024-06-10T17:08:51.010988100Z, Sqs_Msa_ApproximateReceiveCount=1, Sqs_Msa_SentTimestamp=1718039327802, Sqs_Msa_ApproximateFirstReceiveTimestamp=1718039327804, Sqs_QueueName=test-queue, JavaType=org.codingdreamtree.awssqsstudy.message.SimpleMessage, Sqs_Msa_SenderId=AIDA6GBMGD2ZKZIDQ37V3, Sqs_SourceData=Message(MessageId=5e056d75-9d0a-40b9-9485-3af631608e34, ReceiptHandle=AQEBk61YX0BkrA5po5ndgtXSj60AT/OWtC1IV3OzU2uFFkIM9OoifKl4t9mI04V1WWdA3w9EK1ylVl2evF3SvUa3RNwv4w56mS62pCvChWEnvPP4pEOeD5T1qZhdKwbpEqfss7Ws+qrwOgXBizSPCt11bs4yPl+ncJJpMPk547bv9MKaIVmWFKBEooW+WjIc8ExCa/JP889QskJo3LN2C4QwW1yJ7hv1ijC8DB332w7YccHvAdRoVhr3fORYwuWAoksz4q/Dq0cwTFCqK+EcX9y/S9eYchg0RpqPlX4TQ0jEmNWzJdkNiaf64oBQ/xcNjQYm8ADEE3g9M4EcaPvOH7bny+5OYhhczU+YjXDvc4GyY5QCMir4l//2sA4Cz+y066slBTe+4K8U/PP2WShCwGPYPg==, MD5OfBody=78637bdc63d4a9b7ec5de7db44a83fb0, Body={"pk":3,"name":"test3","age":35,"score":700}, Attributes={ApproximateReceiveCount=1, SentTimestamp=1718039327802, SenderId=AIDA6GBMGD2ZKZIDQ37V3, ApproximateFirstReceiveTimestamp=1718039327804}, MD5OfMessageAttributes=1fe5f641ecde5f8350a6d423de172fbf, MessageAttributes={JavaType=MessageAttributeValue(StringValue=org.codingdreamtree.awssqsstudy.message.SimpleMessage, DataType=String), contentType=MessageAttributeValue(StringValue=application/json, DataType=String)}), id=5e056d75-9d0a-40b9-9485-3af631608e34, Sqs_VisibilityTimeout=io.awspring.cloud.sqs.listener.QueueMessageVisibility@19ca9294, contentType=application/json, timestamp=1718039331010}], GenericMessage [payload=SimpleMessage[pk=1, name=test1, age=15, score=300], headers={Sqs_QueueAttributes=io.awspring.cloud.sqs.listener.QueueAttributes@133a6bb4, Sqs_QueueUrl=https://sqs.ap-northeast-2.amazonaws.com/975050251954/test-queue, AcknowledgementCallback=io.awspring.cloud.sqs.listener.acknowledgement.BatchingAcknowledgementProcessor@5ccd9be7, Sqs_ReceiptHandle=AQEBaNz7jmfwAjisOprhh62jysdWcY3Xvy6vyo+aS7r2XD9ZmEoMoqpOGIWDdwSgyzwtn1xRAwG+dUGrxrDW+HUTfw7AYO9ziSN+USNJp+KLpjib6998VxdvXx7XqnbHWHzXkcwav5cP/5b6tRqY1FOrhSFTgBvwjpy1pUAbS9J2ASkk/kEjwh0jwYA6xOXd9dTyVpYeAbNON9T7V7jU+/On79tiGLc2DU6F9jP3lL9Xac7MDwpp92xR5VnWIXJj9ublnjGf+XFCL+bqrRJWY6CwNJxdnGBdfZJl8RdD0vYmmQl1rX2wS4OYamwarQNo2tyaDf82thhfD8KOZt+OkWkthzdE/cenSIZZNphHIhpG7S7VNbLdt/oAjMoixPIPDpvVksnSdX8V/NXrpp4R/8dQtg==, Sqs_ReceivedAt=2024-06-10T17:08:51.054506500Z, Sqs_Msa_ApproximateReceiveCount=1, Sqs_Msa_SentTimestamp=1718039327802, Sqs_Msa_ApproximateFirstReceiveTimestamp=1718039327803, Sqs_QueueName=test-queue, JavaType=org.codingdreamtree.awssqsstudy.message.SimpleMessage, Sqs_Msa_SenderId=AIDA6GBMGD2ZKZIDQ37V3, Sqs_SourceData=Message(MessageId=405a251e-81af-4b04-a2c6-11ffb6956399, ReceiptHandle=AQEBaNz7jmfwAjisOprhh62jysdWcY3Xvy6vyo+aS7r2XD9ZmEoMoqpOGIWDdwSgyzwtn1xRAwG+dUGrxrDW+HUTfw7AYO9ziSN+USNJp+KLpjib6998VxdvXx7XqnbHWHzXkcwav5cP/5b6tRqY1FOrhSFTgBvwjpy1pUAbS9J2ASkk/kEjwh0jwYA6xOXd9dTyVpYeAbNON9T7V7jU+/On79tiGLc2DU6F9jP3lL9Xac7MDwpp92xR5VnWIXJj9ublnjGf+XFCL+bqrRJWY6CwNJxdnGBdfZJl8RdD0vYmmQl1rX2wS4OYamwarQNo2tyaDf82thhfD8KOZt+OkWkthzdE/cenSIZZNphHIhpG7S7VNbLdt/oAjMoixPIPDpvVksnSdX8V/NXrpp4R/8dQtg==, MD5OfBody=0b1e09235be0583a00b5476d438d05a5, Body={"pk":1,"name":"test1","age":15,"score":300}, Attributes={ApproximateReceiveCount=1, SentTimestamp=1718039327802, SenderId=AIDA6GBMGD2ZKZIDQ37V3, ApproximateFirstReceiveTimestamp=1718039327803}, MD5OfMessageAttributes=1fe5f641ecde5f8350a6d423de172fbf, MessageAttributes={JavaType=MessageAttributeValue(StringValue=org.codingdreamtree.awssqsstudy.message.SimpleMessage, DataType=String), contentType=MessageAttributeValue(StringValue=application/json, DataType=String)}), id=405a251e-81af-4b04-a2c6-11ffb6956399, Sqs_VisibilityTimeout=io.awspring.cloud.sqs.listener.QueueMessageVisibility@42c396ca, contentType=application/json, timestamp=1718039331054}], GenericMessage [payload=SimpleMessage[pk=2, name=test2, age=25, score=500], headers={Sqs_QueueAttributes=io.awspring.cloud.sqs.listener.QueueAttributes@133a6bb4, Sqs_QueueUrl=https://sqs.ap-northeast-2.amazonaws.com/975050251954/test-queue, AcknowledgementCallback=io.awspring.cloud.sqs.listener.acknowledgement.BatchingAcknowledgementProcessor@5ccd9be7, Sqs_ReceiptHandle=AQEBLhs4Ful36otyUAgC+cd4Tr/cQ6iweAJuX2MCa8jw6rdQHPoWkiroMrrawRqbML9PH+Wv+mMTqW2FG7pAwMFDoYc2fu6QQbW6E1DbjctpLCQUJE/nPFPsKCjj25Dq8npDyNPUA0ysWvH9LkiGvCsO89p4/Kueks+Or6AB1Ucs2DGtGJf4zEs71AttcRXZfH//hKdSesSgiM5d6wY0vQZzV9NiAWt6HI6DJJmI08ymPpGThqSgRYqmidm4kEPlnVfTeM5qGdxVKVqeK+AqAEGB53Aeb1FoRedzM2KCqfQ+MZmoyYpJ3sypZDq2aotAcYSLPSKh1eZzm+P44zfaf27siTWkeYC9Yysic19ACcwMw6UygixI3aVDgW/pOkz/6pTA89s3PXrDhis+NcV5ZzMl6g==, Sqs_ReceivedAt=2024-06-10T17:08:51.054506500Z, Sqs_Msa_ApproximateReceiveCount=1, Sqs_Msa_SentTimestamp=1718039327803, Sqs_Msa_ApproximateFirstReceiveTimestamp=1718039327805, Sqs_QueueName=test-queue, JavaType=org.codingdreamtree.awssqsstudy.message.SimpleMessage, Sqs_Msa_SenderId=AIDA6GBMGD2ZKZIDQ37V3, Sqs_SourceData=Message(MessageId=89f709e2-c0ad-4f0b-9a4c-88984e5777bd, ReceiptHandle=AQEBLhs4Ful36otyUAgC+cd4Tr/cQ6iweAJuX2MCa8jw6rdQHPoWkiroMrrawRqbML9PH+Wv+mMTqW2FG7pAwMFDoYc2fu6QQbW6E1DbjctpLCQUJE/nPFPsKCjj25Dq8npDyNPUA0ysWvH9LkiGvCsO89p4/Kueks+Or6AB1Ucs2DGtGJf4zEs71AttcRXZfH//hKdSesSgiM5d6wY0vQZzV9NiAWt6HI6DJJmI08ymPpGThqSgRYqmidm4kEPlnVfTeM5qGdxVKVqeK+AqAEGB53Aeb1FoRedzM2KCqfQ+MZmoyYpJ3sypZDq2aotAcYSLPSKh1eZzm+P44zfaf27siTWkeYC9Yysic19ACcwMw6UygixI3aVDgW/pOkz/6pTA89s3PXrDhis+NcV5ZzMl6g==, MD5OfBody=d4c949622f913bdadbdd54857841e60c, Body={"pk":2,"name":"test2","age":25,"score":500}, Attributes={ApproximateReceiveCount=1, SentTimestamp=1718039327803, SenderId=AIDA6GBMGD2ZKZIDQ37V3, ApproximateFirstReceiveTimestamp=1718039327805}, MD5OfMessageAttributes=1fe5f641ecde5f8350a6d423de172fbf, MessageAttributes={JavaType=MessageAttributeValue(StringValue=org.codingdreamtree.awssqsstudy.message.SimpleMessage, DataType=String), contentType=MessageAttributeValue(StringValue=application/json, DataType=String)}), id=89f709e2-c0ad-4f0b-9a4c-88984e5777bd, Sqs_VisibilityTimeout=io.awspring.cloud.sqs.listener.QueueMessageVisibility@5724a3e6, contentType=application/json, timestamp=1718039331054}]]
+2024-06-11 02:09:00 - o.c.a.m.consumer.SqsListenerConsumer - >>>> 소비자 메시지 : SimpleMessage[pk=3, name=test3, age=35, score=700] 
+2024-06-11 02:09:00 - o.c.a.m.consumer.SqsListenerConsumer - >>>> 소비자 메시지 : SimpleMessage[pk=1, name=test1, age=15, score=300] 
+2024-06-11 02:09:00 - o.c.a.m.consumer.SqsListenerConsumer - >>>> 소비자 메시지 : SimpleMessage[pk=2, name=test2, age=25, score=500] 
+2024-06-11 02:13:16 - i.a.c.s.l.AbstractMessageListenerContainer - Container io.awspring.cloud.sqs.sqsListenerEndpointContainer#0 stopped
+2024-06-11 02:13:22 - o.c.a.AwsSqsStudyApplication - Starting AwsSqsStudyApplication using Java 21.0.2 with PID 36800 (C:\bootWorkSpace\AwsSqsStudy\build\classes\java\main started by KIMTAEHYUN in C:\bootWorkSpace\AwsSqsStudy)
+2024-06-11 02:13:22 - o.c.a.AwsSqsStudyApplication - Running with Spring Boot v3.3.0, Spring v6.1.8
+2024-06-11 02:13:22 - o.c.a.AwsSqsStudyApplication - No active profile set, falling back to 1 default profile: "default"
+2024-06-11 02:13:23 - o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2024-06-11 02:13:23 - o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-06-11 02:13:23 - o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-06-11 02:13:23 - o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.24]
+2024-06-11 02:13:23 - o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-06-11 02:13:23 - o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1257 ms
+2024-06-11 02:13:25 - o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-06-11 02:13:25 - o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2024-06-11 02:13:26 - i.a.c.s.l.AbstractMessageListenerContainer - Container io.awspring.cloud.sqs.sqsListenerEndpointContainer#0 started
+2024-06-11 02:13:26 - o.c.a.AwsSqsStudyApplication - Started AwsSqsStudyApplication in 3.986 seconds (process running for 5.14)
+2024-06-11 02:13:28 - o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-06-11 02:13:28 - o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-06-11 02:13:28 - o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2024-06-11 02:13:28 - o.c.a.m.c.SimpleMessageController - >>>>>> 컨트롤러 메시지 전송 완료
+2024-06-11 02:13:28 - o.c.a.m.p.SpringIntegrationSqsProducer - >>>>>> 메시지 전송 성공 전송량: 3
+2024-06-11 02:13:31 - o.c.a.m.consumer.SqsListenerConsumer - >>>> 소비자 메시지 : SimpleMessage[pk=3, name=test3, age=35, score=700] 
+2024-06-11 02:13:31 - o.c.a.m.consumer.SqsListenerConsumer - >>>> 소비자 메시지 : SimpleMessage[pk=1, name=test1, age=15, score=300] 
+2024-06-11 02:13:31 - o.c.a.m.consumer.SqsListenerConsumer - >>>> 소비자 메시지 : SimpleMessage[pk=2, name=test2, age=25, score=500] 
+2024-06-11 02:13:34 - o.c.a.m.c.SimpleMessageController - >>>>>> 컨트롤러 메시지 전송 완료
+2024-06-11 02:13:34 - o.c.a.m.p.SpringIntegrationSqsProducer - >>>>>> 메시지 전송 성공 전송량: 3
+2024-06-11 02:13:34 - o.c.a.m.consumer.SqsListenerConsumer - >>>> 소비자 메시지 : SimpleMessage[pk=1, name=test1, age=15, score=300] 
+2024-06-11 02:13:34 - o.c.a.m.consumer.SqsListenerConsumer - >>>> 소비자 메시지 : SimpleMessage[pk=2, name=test2, age=25, score=500] 
+2024-06-11 02:13:34 - o.c.a.m.consumer.SqsListenerConsumer - >>>> 소비자 메시지 : SimpleMessage[pk=3, name=test3, age=35, score=700] 
+2024-06-11 02:13:35 - o.c.a.m.c.SimpleMessageController - >>>>>> 컨트롤러 메시지 전송 완료
+2024-06-11 02:13:35 - o.c.a.m.p.SpringIntegrationSqsProducer - >>>>>> 메시지 전송 성공 전송량: 3
+2024-06-11 02:13:35 - o.c.a.m.consumer.SqsListenerConsumer - >>>> 소비자 메시지 : SimpleMessage[pk=3, name=test3, age=35, score=700] 
+2024-06-11 02:13:35 - o.c.a.m.consumer.SqsListenerConsumer - >>>> 소비자 메시지 : SimpleMessage[pk=1, name=test1, age=15, score=300] 
+2024-06-11 02:13:35 - o.c.a.m.consumer.SqsListenerConsumer - >>>> 소비자 메시지 : SimpleMessage[pk=2, name=test2, age=25, score=500] 
+2024-06-11 02:13:36 - o.c.a.m.c.SimpleMessageController - >>>>>> 컨트롤러 메시지 전송 완료
+2024-06-11 02:13:36 - o.c.a.m.p.SpringIntegrationSqsProducer - >>>>>> 메시지 전송 성공 전송량: 3
+2024-06-11 02:13:36 - o.c.a.m.consumer.SqsListenerConsumer - >>>> 소비자 메시지 : SimpleMessage[pk=1, name=test1, age=15, score=300] 
+2024-06-11 02:13:36 - o.c.a.m.consumer.SqsListenerConsumer - >>>> 소비자 메시지 : SimpleMessage[pk=2, name=test2, age=25, score=500] 
+2024-06-11 02:13:36 - o.c.a.m.consumer.SqsListenerConsumer - >>>> 소비자 메시지 : SimpleMessage[pk=3, name=test3, age=35, score=700] 
+2024-06-11 02:29:08 - i.a.c.s.l.AbstractMessageListenerContainer - Container io.awspring.cloud.sqs.sqsListenerEndpointContainer#0 stopped
+2024-06-11 02:29:17 - o.c.a.AwsSqsStudyApplication - Starting AwsSqsStudyApplication using Java 21.0.2 with PID 45660 (C:\bootWorkSpace\AwsSqsStudy\build\classes\java\main started by KIMTAEHYUN in C:\bootWorkSpace\AwsSqsStudy)
+2024-06-11 02:29:17 - o.c.a.AwsSqsStudyApplication - Running with Spring Boot v3.3.0, Spring v6.1.8
+2024-06-11 02:29:17 - o.c.a.AwsSqsStudyApplication - No active profile set, falling back to 1 default profile: "default"
+2024-06-11 02:29:18 - o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2024-06-11 02:29:18 - o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-06-11 02:29:18 - o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-06-11 02:29:18 - o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.24]
+2024-06-11 02:29:18 - o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-06-11 02:29:18 - o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1239 ms
+2024-06-11 02:29:19 - o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-06-11 02:29:19 - o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2024-06-11 02:29:19 - o.c.a.AwsSqsStudyApplication - Started AwsSqsStudyApplication in 3.076 seconds (process running for 4.185)
+2024-06-11 02:29:24 - o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-06-11 02:29:24 - o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-06-11 02:29:24 - o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2024-06-11 02:29:24 - o.c.a.m.c.SimpleMessageController - >>>>>> 컨트롤러 메시지 전송 완료
+2024-06-11 02:29:25 - o.c.a.m.p.SpringIntegrationSqsProducer - >>>>>> 메시지 전송 성공 전송량: 3
+2024-06-11 02:31:40 - o.c.a.AwsSqsStudyApplication - Starting AwsSqsStudyApplication using Java 21.0.2 with PID 11888 (C:\bootWorkSpace\AwsSqsStudy\build\classes\java\main started by KIMTAEHYUN in C:\bootWorkSpace\AwsSqsStudy)
+2024-06-11 02:31:40 - o.c.a.AwsSqsStudyApplication - Running with Spring Boot v3.3.0, Spring v6.1.8
+2024-06-11 02:31:40 - o.c.a.AwsSqsStudyApplication - No active profile set, falling back to 1 default profile: "default"
+2024-06-11 02:31:41 - o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2024-06-11 02:31:41 - o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-06-11 02:31:41 - o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-06-11 02:31:41 - o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.24]
+2024-06-11 02:31:41 - o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-06-11 02:31:41 - o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1289 ms
+2024-06-11 02:31:43 - o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-06-11 02:31:43 - o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2024-06-11 02:31:43 - o.c.a.AwsSqsStudyApplication - Started AwsSqsStudyApplication in 3.385 seconds (process running for 4.52)
+2024-06-11 02:32:29 - o.c.a.AwsSqsStudyApplication - Starting AwsSqsStudyApplication using Java 21.0.2 with PID 43588 (C:\bootWorkSpace\AwsSqsStudy\build\classes\java\main started by KIMTAEHYUN in C:\bootWorkSpace\AwsSqsStudy)
+2024-06-11 02:32:29 - o.c.a.AwsSqsStudyApplication - Running with Spring Boot v3.3.0, Spring v6.1.8
+2024-06-11 02:32:29 - o.c.a.AwsSqsStudyApplication - No active profile set, falling back to 1 default profile: "default"
+2024-06-11 02:32:30 - o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2024-06-11 02:32:30 - o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-06-11 02:32:30 - o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-06-11 02:32:30 - o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.24]
+2024-06-11 02:32:30 - o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-06-11 02:32:30 - o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1263 ms
+2024-06-11 02:32:31 - o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-06-11 02:32:31 - o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2024-06-11 02:32:31 - o.c.a.AwsSqsStudyApplication - Started AwsSqsStudyApplication in 3.094 seconds (process running for 4.184)
+2024-06-11 02:32:32 - o.c.a.m.consumer.ScheduledConsume - Polling for messages...
+2024-06-11 02:32:32 - o.c.a.m.consumer.ScheduledConsume - Processing message: {"pk":3,"name":"test3","age":35,"score":700}
+2024-06-11 02:32:37 - o.c.a.m.consumer.ScheduledConsume - Polling for messages...
+2024-06-11 02:32:37 - o.c.a.m.consumer.ScheduledConsume - Processing message: {"pk":1,"name":"test1","age":15,"score":300}
+2024-06-11 02:32:37 - o.c.a.m.consumer.ScheduledConsume - Processing message: {"pk":2,"name":"test2","age":25,"score":500}
+2024-06-11 02:32:42 - o.c.a.m.consumer.ScheduledConsume - Polling for messages...
+2024-06-11 02:32:47 - o.c.a.m.consumer.ScheduledConsume - Polling for messages...
+2024-06-11 02:32:52 - o.c.a.m.consumer.ScheduledConsume - Polling for messages...
+2024-06-11 02:32:57 - o.c.a.m.consumer.ScheduledConsume - Polling for messages...
+2024-06-11 02:33:02 - o.c.a.m.consumer.ScheduledConsume - Polling for messages...
+2024-06-11 02:33:07 - o.c.a.m.consumer.ScheduledConsume - Polling for messages...
+2024-06-11 02:33:12 - o.c.a.m.consumer.ScheduledConsume - Polling for messages...
+2024-06-11 02:33:17 - o.c.a.m.consumer.ScheduledConsume - Polling for messages...
+2024-06-11 02:33:22 - o.c.a.m.consumer.ScheduledConsume - Polling for messages...
+2024-06-11 02:33:27 - o.c.a.m.consumer.ScheduledConsume - Polling for messages...
+2024-06-11 02:33:32 - o.c.a.m.consumer.ScheduledConsume - Polling for messages...
