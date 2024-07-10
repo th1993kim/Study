@@ -1,0 +1,16 @@
+
+	java:S112)"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8û®î®‡2J$912b4b79-c387-4119-8199-3043244a07ea
+w
+java:S3740"/Provide the parametrized type for this generic.(«ä´äüÿÿÿÿ8ü®î®‡2J$e79bbd0e-34fb-4ae8-ae5e-79f0bccc87e6
+w
+java:S3740"/Provide the parametrized type for this generic.(€¹Èäüÿÿÿÿ8ü®î®‡2J$8fad9729-a2d4-453f-a300-d6d051e47404
+w
+java:S3740"/Provide the parametrized type for this generic.(×‰ÌÉùÿÿÿÿ8ü®î®‡2J$010dbeca-39fd-4fd9-8d70-697804f1b19b
+¡
+java:S2142("^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€8¯î®‡2J$cb8e0983-57fa-408b-9bed-e644f75fe688
+Œ
+java:S2147!"DCombine this catch with the one at line 31, which has the same body.(åşŒóùÿÿÿÿ8¯î®‡2J$03fdd0f6-ab8c-48a8-9e5c-79f66c12ebd9
+¡
+java:S2142"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€8¯î®‡2J$ad3818f4-8640-4ccc-92f4-5ea0bcf6f926
+`
+java:S1128"CRemove this unused import 'org.springframework.stereotype.Service'.(¼º¡Ú8ªÃ÷ø‡2

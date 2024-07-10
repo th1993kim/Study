@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.codingdreamtree.awssqsstudy.message.SqsListenerConsumerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-07-04T19:16:41" hostname="DESKTOP-GP75MD1" time="1.122">
+  <properties/>
+  <testcase name="Sqs Listener 테스트 코드" classname="org.codingdreamtree.awssqsstudy.message.SqsListenerConsumerTest" time="1.122"/>
+  <system-out><![CDATA[2024-07-05 04:16:23 - o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [org.codingdreamtree.awssqsstudy.message.SqsListenerConsumerTest]: SqsListenerConsumerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-07-05 04:16:24 - o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration org.codingdreamtree.awssqsstudy.AwsSqsStudyApplication for test class org.codingdreamtree.awssqsstudy.message.SqsListenerConsumerTest
+2024-07-05 04:16:24 - o.testcontainers.images.PullPolicy - Image pull policy will be performed by: DefaultPullPolicy()
+2024-07-05 04:16:24 - o.t.utility.ImageNameSubstitutor - Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2024-07-05 04:16:24 - o.t.d.DockerClientProviderStrategy - Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2024-07-05 04:16:25 - o.t.d.DockerClientProviderStrategy - Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+2024-07-05 04:16:25 - o.testcontainers.DockerClientFactory - Docker host IP address is localhost
+2024-07-05 04:16:25 - o.testcontainers.DockerClientFactory - Connected to docker: 
+  Server Version: 23.0.5
+  API Version: 1.42
+  Operating System: Docker Desktop
+  Total Memory: 7644 MB
+2024-07-05 04:16:25 - tc.testcontainers/ryuk:0.7.0 - Creating container for image: testcontainers/ryuk:0.7.0
+2024-07-05 04:16:26 - tc.testcontainers/ryuk:0.7.0 - Container testcontainers/ryuk:0.7.0 is starting: 8497135ab8f9adaa54bd3469afc7a809240d12a4b24aee10ba03e72db1627b12
+2024-07-05 04:16:27 - tc.testcontainers/ryuk:0.7.0 - Container testcontainers/ryuk:0.7.0 started in PT1.4164742S
+2024-07-05 04:16:27 - o.t.utility.RyukResourceReaper - Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2024-07-05 04:16:27 - o.testcontainers.DockerClientFactory - Checking the system...
+2024-07-05 04:16:27 - o.testcontainers.DockerClientFactory - ✔︎ Docker server version should be at least 1.6.0
+2024-07-05 04:16:27 - tc.localstack/localstack:latest - LOCALSTACK_HOST environment variable set to localhost.localstack.cloud (explicitly as environment variable)
+2024-07-05 04:16:27 - tc.localstack/localstack:latest - Creating container for image: localstack/localstack:latest
+2024-07-05 04:16:28 - tc.localstack/localstack:latest - Container localstack/localstack:latest is starting: e8674158d0ccc70d10f0d3fff2ad54cc24b1929e7a8d1486d842ab3329506bbe
+2024-07-05 04:16:31 - tc.localstack/localstack:latest - Container localstack/localstack:latest started in PT4.3387006S
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.0)
+
+2024-07-05 04:16:36 - o.c.a.m.SqsListenerConsumerTest - Starting SqsListenerConsumerTest using Java 21.0.2 with PID 37444 (started by KIMTAEHYUN in C:\bootWorkSpace\Study\AwsSqsStudy)
+2024-07-05 04:16:36 - o.c.a.m.SqsListenerConsumerTest - Running with Spring Boot v3.3.0, Spring v6.1.8
+2024-07-05 04:16:36 - o.c.a.m.SqsListenerConsumerTest - No active profile set, falling back to 1 default profile: "default"
+2024-07-05 04:16:41 - i.a.c.s.l.AbstractMessageListenerContainer - Container io.awspring.cloud.sqs.sqsListenerEndpointContainer#0 started
+2024-07-05 04:16:41 - o.c.a.m.SqsListenerConsumerTest - Started SqsListenerConsumerTest in 5.421 seconds (process running for 19.649)
+2024-07-05 04:16:42 - o.c.a.m.p.SpringIntegrationSqsProducer - >>>>>> 메시지 전송 성공 전송량: 10
+2024-07-05 04:16:42 - o.c.a.m.consumer.SqsListenerConsumer - >>>>>>> 소비 10개의 메시지 큐 시작 시작시간 : 2024-07-05T04:16:42.118468100
+2024-07-05 04:16:42 - o.c.a.m.consumer.SqsListenerConsumer - >>>>>>> 소비 10개의 메시지 큐 시작 종료시간 : 2024-07-05T04:16:42.136129800
+2024-07-05 04:16:42 - o.c.a.m.consumer.SqsListenerConsumer - >>>>>>> 소비 10개의 메시지 큐 시작 시작시간 : 2024-07-05T04:16:42.170172600
+2024-07-05 04:16:42 - o.c.a.m.consumer.SqsListenerConsumer - >>>>>>> 소비 10개의 메시지 큐 시작 종료시간 : 2024-07-05T04:16:42.171809800
+2024-07-05 04:16:43 - i.a.c.s.l.s.AbstractPollingMessageSource - Error polling for messages in queue test-queue.
+java.util.concurrent.CompletionException: software.amazon.awssdk.core.exception.SdkClientException: Unable to execute HTTP request: 현재 연결은 사용자의 호스트 시스템의 소프트웨어의 의해 중단되었습니다
+	at software.amazon.awssdk.utils.CompletableFutureUtils.errorAsCompletionException(CompletableFutureUtils.java:65)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.AsyncExecutionFailureExceptionReportingStage.lambda$execute$0(AsyncExecutionFailureExceptionReportingStage.java:51)
+	at java.base/java.util.concurrent.CompletableFuture.uniHandle(CompletableFuture.java:934)
+	at java.base/java.util.concurrent.CompletableFuture$UniHandle.tryFire(CompletableFuture.java:911)
+	at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:510)
+	at java.base/java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2194)
+	at software.amazon.awssdk.utils.CompletableFutureUtils.lambda$forwardExceptionTo$0(CompletableFutureUtils.java:79)
+	at java.base/java.util.concurrent.CompletableFuture.uniWhenComplete(CompletableFuture.java:863)
+	at java.base/java.util.concurrent.CompletableFuture$UniWhenComplete.tryFire(CompletableFuture.java:841)
+	at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:510)
+	at java.base/java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2194)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.AsyncRetryableStage$RetryingExecutor.maybeAttemptExecute(AsyncRetryableStage.java:103)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.AsyncRetryableStage$RetryingExecutor.maybeRetryExecute(AsyncRetryableStage.java:184)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.AsyncRetryableStage$RetryingExecutor.lambda$attemptExecute$1(AsyncRetryableStage.java:159)
+	at java.base/java.util.concurrent.CompletableFuture.uniWhenComplete(CompletableFuture.java:863)
+	at java.base/java.util.concurrent.CompletableFuture$UniWhenComplete.tryFire(CompletableFuture.java:841)
+	at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:510)
+	at java.base/java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2194)
+	at software.amazon.awssdk.utils.CompletableFutureUtils.lambda$forwardExceptionTo$0(CompletableFutureUtils.java:79)
+	at java.base/java.util.concurrent.CompletableFuture.uniWhenComplete(CompletableFuture.java:863)
+	at java.base/java.util.concurrent.CompletableFuture$UniWhenComplete.tryFire(CompletableFuture.java:841)
+	at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:510)
+	at java.base/java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2194)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.MakeAsyncHttpRequestStage.lambda$execute$0(MakeAsyncHttpRequestStage.java:108)
+	at java.base/java.util.concurrent.CompletableFuture.uniWhenComplete(CompletableFuture.java:863)
+	at java.base/java.util.concurrent.CompletableFuture$UniWhenComplete.tryFire(CompletableFuture.java:841)
+	at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:510)
+	at java.base/java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2194)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.MakeAsyncHttpRequestStage.completeResponseFuture(MakeAsyncHttpRequestStage.java:255)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.MakeAsyncHttpRequestStage.lambda$executeHttpRequest$3(MakeAsyncHttpRequestStage.java:167)
+	at java.base/java.util.concurrent.CompletableFuture.uniHandle(CompletableFuture.java:934)
+	at java.base/java.util.concurrent.CompletableFuture$UniHandle.tryFire(CompletableFuture.java:911)
+	at java.base/java.util.concurrent.CompletableFuture$Completion.run(CompletableFuture.java:482)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: software.amazon.awssdk.core.exception.SdkClientException: Unable to execute HTTP request: 현재 연결은 사용자의 호스트 시스템의 소프트웨어의 의해 중단되었습니다
+	at software.amazon.awssdk.core.exception.SdkClientException$BuilderImpl.build(SdkClientException.java:111)
+	at software.amazon.awssdk.core.exception.SdkClientException.create(SdkClientException.java:47)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.utils.RetryableStageHelper.setLastException(RetryableStageHelper.java:223)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.utils.RetryableStageHelper.setLastException(RetryableStageHelper.java:218)
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.AsyncRetryableStage$RetryingExecutor.maybeRetryExecute(AsyncRetryableStage.java:182)
+	... 23 common frames omitted
+	Suppressed: software.amazon.awssdk.core.exception.SdkClientException: Request attempt 1 failure: Unable to execute HTTP request: The connection was closed during the request. The request will usually succeed on a retry, but if it does not: consider disabling any proxies you have configured, enabling debug logging, or performing a TCP dump to identify the root cause. If this is a streaming operation, validate that data is being read or written in a timely manner. Channel Information: ChannelDiagnostics(channel=[id: 0x0b826bdc, L:/127.0.0.1:50496 ! R:/127.0.0.1:50458], channelAge=PT1.1497372S, requestCount=4, responseCount=3, lastIdleDuration=PT0.011042S)
+	Suppressed: software.amazon.awssdk.core.exception.SdkClientException: Request attempt 2 failure: Unable to execute HTTP request: The connection was closed during the request. The request will usually succeed on a retry, but if it does not: consider disabling any proxies you have configured, enabling debug logging, or performing a TCP dump to identify the root cause. If this is a streaming operation, validate that data is being read or written in a timely manner. Channel Information: ChannelDiagnostics(channel=[id: 0x1216444e, L:/127.0.0.1:50498 ! R:/127.0.0.1:50458], channelAge=PT0.0068776S, requestCount=1, responseCount=0)
+	Suppressed: software.amazon.awssdk.core.exception.SdkClientException: Request attempt 3 failure: Unable to execute HTTP request: 현재 연결은 사용자의 호스트 시스템의 소프트웨어의 의해 중단되었습니다
+Caused by: java.io.IOException: 현재 연결은 사용자의 호스트 시스템의 소프트웨어의 의해 중단되었습니다
+	at java.base/sun.nio.ch.SocketDispatcher.read0(Native Method)
+	at java.base/sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:46)
+	at java.base/sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:340)
+	at java.base/sun.nio.ch.IOUtil.read(IOUtil.java:294)
+	at java.base/sun.nio.ch.IOUtil.read(IOUtil.java:269)
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:425)
+	at io.netty.buffer.PooledByteBuf.setBytes(PooledByteBuf.java:255)
+	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1132)
+	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:356)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:151)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:788)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:994)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	... 1 common frames omitted
+]]></system-out>
+  <system-err><![CDATA[WARNING: A Java agent has been loaded dynamically (C:\Users\KIMTAEHYUN\.gradle\caches\modules-2\files-2.1\net.bytebuddy\byte-buddy-agent\1.14.16\4a451ee6484abac3a498df0f3b33ed00a6fced4d\byte-buddy-agent-1.14.16.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+]]></system-err>
+</testsuite>

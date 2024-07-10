@@ -48,13 +48,21 @@ public class SpringIntegrationSqsProducer {
     }
 
     private List<Message<SimpleMessage>> getSimpleMessageList() {
-        SimpleMessage test1 = new SimpleMessage(1, "test1", 15, 300);
-        SimpleMessage test2 = new SimpleMessage(2, "test2", 25, 500);
-        SimpleMessage test3 = new SimpleMessage(3, "test3", 35, 700);
         return List.of(
-                MessageBuilder.withPayload(test1).build(),
-                MessageBuilder.withPayload(test2).build(),
-                MessageBuilder.withPayload(test3).build()
+                MessageBuilder.withPayload(getSimpleMessage(1, "test1", 15, 1300)).build(),
+                MessageBuilder.withPayload(getSimpleMessage(2, "test2", 20,2300)).build(),
+                MessageBuilder.withPayload(getSimpleMessage(3, "test3", 25, 1300)).build(),
+                MessageBuilder.withPayload(getSimpleMessage(4, "test4", 20, 1300)).build(),
+                MessageBuilder.withPayload(getSimpleMessage(5, "test5", 15, 2300)).build(),
+                MessageBuilder.withPayload(getSimpleMessage(6, "test6", 30, 3300)).build(),
+                MessageBuilder.withPayload(getSimpleMessage(7, "test7", 16, 4300)).build(),
+                MessageBuilder.withPayload(getSimpleMessage(8, "test8", 39, 5300)).build(),
+                MessageBuilder.withPayload(getSimpleMessage(9, "test9", 42, 6300)).build(),
+                MessageBuilder.withPayload(getSimpleMessage(10, "test10", 100, 7300)).build()
         );
+    }
+
+    private SimpleMessage getSimpleMessage(int pk, String name, int age, int salary) {
+        return new SimpleMessage(pk, name, age, salary);
     }
 }
