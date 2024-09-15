@@ -57,4 +57,20 @@ public class P1978 {
 
         return true;
     }
+
+    public static int isPrimeOtherAnswer(int count, Scanner scan) {
+        int primeCount = 0;
+        root: for (int i = 0; i < count; i++) {
+            int input = scan.nextInt();
+            if (input > 1) {
+                for (int j = 2; j <= Math.sqrt(input); j++) {
+                    if (input % j == 0) {
+                        continue root;
+                    }
+                }
+                primeCount ++;
+            }
+        }
+        return primeCount;
+    }
 }
