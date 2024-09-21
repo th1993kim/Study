@@ -58,6 +58,6 @@ public class P5073 {
     }
 
     private static boolean isInvalidTriangle(int a, int b, int c) {
-        return (a + b) < c && (b + c) < a && (a + c) < b;
+        return (a + b) <= c && (b + c) <= a && (a + c) <= b;
     }
 }
