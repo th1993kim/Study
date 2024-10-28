@@ -1,12 +1,21 @@
+server:
+  tomcat:
+    threads:
+      max: 500
+      min-spare: 30
+
 spring:
+  application:
+    name: core
+
   datasource:
     hikari:
       jdbc-url: jdbc:mysql://localhost:3306/multi?serverTimezone=UTC&characterEncoding=UTF-8
       username: root
       password:
       driver-class-name: com.mysql.cj.jdbc.Driver
-      minimum-idle: 5
-      maximum-pool-size: 10
+      minimum-idle: 10
+      maximum-pool-size: 20
       connection-timeout: 60000 # DB 커넥션을 얻기 위한 제한시간
       max-lifetime: 1800000 #
       idle-timeout: 600000 # 최소 커넥션 풀 사이즈 < 최대 커넥션 풀 사이즈 일때, 유휴 상태인 커넥션을 시간이 경과하면 연결을 끊어준다.
@@ -23,8 +32,7 @@ spring:
       hibernate:
         format_sql: true
         dialect: org.hibernate.dialect.MySQLDialect
-  application:
-    name: coreApp
+
 
 logging:
   level:
@@ -41,6 +49,7 @@ management:
       exposure:
         include: prometheus
 
+  metrics:
     tags:
-      namespace: local
       application: ${spring.application.name}
+      region: seoul

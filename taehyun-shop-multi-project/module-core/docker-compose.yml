@@ -13,18 +13,18 @@ services:
           memory: "1G"
     ports:
       - "10001:8080"
-  springBoot2:
-    image: th1993kim/multi-module-core
-    build:
-      context: .
-      dockerfile: Dockerfile
-    deploy:
-      resources:
-        limits:
-          cpus: "2.0"
-          memory: "1G"
-    ports:
-      - "10002:8080"
+#  springBoot2:
+#    image: th1993kim/multi-module-core
+#    build:
+#      context: .
+#      dockerfile: Dockerfile
+#    deploy:
+#      resources:
+#        limits:
+#          cpus: "2.0"
+#          memory: "1G"
+#    ports:
+#      - "10002:8080"
 #  springBoot3:
 #    image: th1993kim/multi-module-core
 #    build:
