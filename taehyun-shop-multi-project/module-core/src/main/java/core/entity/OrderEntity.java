@@ -1,18 +1,26 @@
-package order;
+package core.entity;
 
 import jakarta.persistence.*;
-import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
 
-@EnableJpaAuditing
+@Builder
+@EntityListeners(AuditingEntityListener.class)
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
 @Entity
 @Table(name = "shop_order")
-public class Order {
+public class OrderEntity {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id")
+    @Column(name = "seq_shop_order")
     private Long id;
     private String orderName;
     private Integer price;

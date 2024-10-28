@@ -42,10 +42,6 @@ subprojects {
         }
     }
 
-    configure<SpringBootExtension> {
-        mainClass.set("io.bootify.kotlin.base.KotlinApplicationKt")
-    }
-
     tasks.getByName<BootRun>("bootRun") {
         enabled = false
     }

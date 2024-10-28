@@ -1,0 +1,4 @@
+spring:
+  datasource:
+    hikari:
+      jdbc-url: jdbc:mysql://host.docker.internal:3306/multi?serverTimezone=UTC&characterEncoding=UTF-8
