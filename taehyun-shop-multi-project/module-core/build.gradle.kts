@@ -22,10 +22,10 @@ dependencies {
     implementation("org.projectlombok:lombok")
     implementation("com.querydsl:querydsl-jpa:5.0.0:jakarta")
 
+
     runtimeOnly("com.h2database:h2")
     runtimeOnly("io.micrometer:micrometer-registry-prometheus")
-    runtimeOnly("org.mariadb.jdbc:mariadb-java-client")
-    runtimeOnly("com.mysql:mysql-connector-j")
+    runtimeOnly("com.mysql:mysql-connector-j:9.1.0")
 
     testImplementation(platform("org.junit:junit-bom:5.10.0"))
     testImplementation("org.junit.jupiter:junit-jupiter")

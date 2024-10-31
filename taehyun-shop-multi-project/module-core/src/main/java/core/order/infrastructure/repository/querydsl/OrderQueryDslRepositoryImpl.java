@@ -25,7 +25,7 @@ public class OrderQueryDslRepositoryImpl implements OrderQueryDslRepository {
                         orderEntity.regId))
                 .from(orderEntity)
                 .where(orderEntity.id.eq(seqOrderId)
-                .and(Expressions.booleanTemplate("function('SLEEP', 0.08) = 0")))
+                .and(Expressions.booleanTemplate("function('SLEEP', 10) = 0")))
                 .fetchOne();
     }
 }
