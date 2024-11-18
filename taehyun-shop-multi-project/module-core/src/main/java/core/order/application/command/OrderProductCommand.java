@@ -1,21 +1,23 @@
 package core.order.application.command;
 
-import core.entity.OrderEntity;
+import core.order.entity.OrderEntity;
+import core.product.entity.ProductEntity;
 import lombok.Builder;
 
 @Builder
-public record SaveOrderCommand(
-        String orderName,
+public record OrderProductCommand(
+        long seqProduct,
         int price,
         int regId,
-        int updateId
+        long updateId
 ) {
     public OrderEntity toEntity() {
 
         return OrderEntity.builder()
-                .orderName(orderName)
+                .product(ProductEntity.builder()
+                        .id(seqProduct)
+                        .build())
                 .price(price)
-                .regId(regId)
                 .updateId(updateId)
                 .build();
     }

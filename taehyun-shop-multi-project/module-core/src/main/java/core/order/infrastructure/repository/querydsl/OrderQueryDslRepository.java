@@ -1,6 +1,6 @@
 package core.order.infrastructure.repository.querydsl;
 
-import core.order.application.domain.OrderDetail;
+import core.order.infrastructure.result.OrderDetail;
 
 public interface OrderQueryDslRepository {
 

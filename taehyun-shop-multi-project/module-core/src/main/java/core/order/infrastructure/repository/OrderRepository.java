@@ -1,7 +1,7 @@
 package core.order.infrastructure.repository;
 
-import core.entity.OrderEntity;
 import core.order.application.domain.OrderDetail;
+import core.order.entity.OrderEntity;
 
 import java.util.Optional;
 

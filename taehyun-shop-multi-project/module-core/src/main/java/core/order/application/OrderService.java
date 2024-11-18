@@ -1,7 +1,9 @@
 package core.order.application;
 
-import core.order.application.command.SaveOrderCommand;
+import core.order.application.command.OrderProductCommand;
+import core.order.application.domain.OrderProductResult;
 
 public interface OrderService {
-    void saveOrder(SaveOrderCommand saveOrderCommand);
+
+    OrderProductResult orderProduct(OrderProductCommand orderProductCommand);
 }

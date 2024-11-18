@@ -16,12 +16,7 @@ public class OrderViewServiceImpl implements OrderViewService {
     @Override
     public OrderDetail getOrderDetail(Long seqOrderId) {
         return orderRepository.findOne(seqOrderId)
-                .map(order -> new OrderDetail(order.getOrderName(), order.getPrice(), order.getRegId()))
+                .map(order -> new OrderDetail(order.getOrderName(), order.getPrice(), order.getMember().getId()))
                 .orElse(null);
-    }
-
-    @Override
-    public OrderDetail findOrderSlowly(Long seqOrderId) {
-        return orderRepository.findOneSlowly(seqOrderId);
     }
 }

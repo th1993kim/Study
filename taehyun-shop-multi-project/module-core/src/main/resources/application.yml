@@ -2,7 +2,7 @@
 #  tomcat:
 #    threads:
 #      max: 2000
-#      min-spare: 1000
+#      min-spare: 100
 
 spring:
   application:

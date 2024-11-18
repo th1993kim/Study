@@ -7,7 +7,8 @@ import core.order.application.domain.OrderDetail;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
-import static core.entity.QOrderEntity.orderEntity;
+import static core.order.infrastructure.entity.QOrderEntity.orderEntity;
+
 
 @Repository
 @RequiredArgsConstructor
@@ -22,7 +23,7 @@ public class OrderQueryDslRepositoryImpl implements OrderQueryDslRepository {
                 .select(Projections.constructor(OrderDetail.class,
                         orderEntity.orderName,
                         orderEntity.price,
-                        orderEntity.regId))
+                        orderEntity.member.id))
                 .from(orderEntity)
                 .where(orderEntity.id.eq(seqOrderId)
                 .and(Expressions.booleanTemplate("function('SLEEP', 10) = 0")))

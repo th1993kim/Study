@@ -1,15 +1,14 @@
-package core.order.api;
+package api.order.api;
 
-import core.order.api.request.SaveOrderRequest;
 import core.order.application.OrderService;
 import core.order.application.OrderViewService;
 import core.order.application.domain.OrderDetail;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
 @RequestMapping("/api/v1/orders")
 @RequiredArgsConstructor
 @Slf4j
@@ -19,9 +18,9 @@ public class OrderController {
     private final OrderViewService orderViewService;
 
     @PostMapping
-    public ResponseEntity<Void> saveOrder(@RequestBody SaveOrderRequest request) {
+    public ResponseEntity<Void> orderProduct(@RequestBody SaveOrderRequest request) {
 
-        orderService.saveOrder(request.toSaveOrderCommand());
+        orderService.orderProduct(request.toSaveOrderCommand());
 
         return ResponseEntity.ok().build();
     }
@@ -32,9 +31,4 @@ public class OrderController {
         return ResponseEntity.ok(orderViewService.getOrderDetail(seqOrderId));
     }
 
-    @GetMapping("/{seqOrderId}/slowly")
-    public ResponseEntity<OrderDetail> findOrderSlowly(@PathVariable Long seqOrderId) {
-
-        return ResponseEntity.ok(orderViewService.findOrderSlowly(seqOrderId));
-    }
 }

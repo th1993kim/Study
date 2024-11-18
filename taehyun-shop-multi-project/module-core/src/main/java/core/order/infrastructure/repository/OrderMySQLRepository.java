@@ -1,9 +1,9 @@
 package core.order.infrastructure.repository;
 
-import core.entity.OrderEntity;
-import core.order.application.domain.OrderDetail;
+import core.order.entity.OrderEntity;
 import core.order.infrastructure.repository.jpa.OrderJpaRepository;
 import core.order.infrastructure.repository.querydsl.OrderQueryDslRepository;
+import core.order.infrastructure.result.OrderDetail;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @Repository
 @RequiredArgsConstructor
-public class OrderRepositoryImpl implements OrderRepository {
+public class OrderMySQLRepository implements OrderRepository {
 
     private final OrderJpaRepository orderJpaRepository;
     private final OrderQueryDslRepository orderQueryDslRepository;
