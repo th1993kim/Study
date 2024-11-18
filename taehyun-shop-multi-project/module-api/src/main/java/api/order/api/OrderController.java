@@ -3,7 +3,7 @@ package api.order.api;
 import core.order.application.OrderService;
 import core.order.application.OrderViewService;
 import core.order.application.domain.OrderDetail;
-import jakarta.servlet.http.HttpServletRequest;
+import core.order.application.domain.OrderProductResult;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -18,11 +18,8 @@ public class OrderController {
     private final OrderViewService orderViewService;
 
     @PostMapping
-    public ResponseEntity<Void> orderProduct(@RequestBody SaveOrderRequest request) {
-
-        orderService.orderProduct(request.toSaveOrderCommand());
-
-        return ResponseEntity.ok().build();
+    public ResponseEntity<OrderProductResult> orderProduct(@RequestBody SaveOrderRequest request) {
+        return ResponseEntity.ok(orderService.orderProduct(request.toSaveOrderCommand()));
     }
 
     @GetMapping("/{seqOrderId}")

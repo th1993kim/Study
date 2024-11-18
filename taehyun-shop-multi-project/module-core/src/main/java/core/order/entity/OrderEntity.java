@@ -29,6 +29,7 @@ public class OrderEntity {
     @Column(name = "seq_shop_order")
     private Long id;
     private Integer price;
+    private String orderName;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "seq_product")
     private ProductEntity product;
@@ -45,4 +46,8 @@ public class OrderEntity {
     private Long updateId;
     @LastModifiedDate
     private LocalDateTime updateDateTime;
+
+    public void success() {
+        orderStatus = OrderStatus.COMPLETE;
+    }
 }

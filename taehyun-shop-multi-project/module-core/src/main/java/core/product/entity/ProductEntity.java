@@ -27,7 +27,8 @@ public class ProductEntity {
     @Column(name = "seq_product")
     private Long id;
     private String productName;
-    private Integer count;
+    private Integer price;
+    private Integer stock;
     @CreatedBy
     private Long regId;
     @CreatedDate
@@ -36,4 +37,8 @@ public class ProductEntity {
     private Long updateId;
     @LastModifiedDate
     private LocalDateTime updateDateTime;
+
+    public void decreaseStock() {
+        stock--;
+    }
 }

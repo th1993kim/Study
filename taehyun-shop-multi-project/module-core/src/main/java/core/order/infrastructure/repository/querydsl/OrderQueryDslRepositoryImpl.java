@@ -16,17 +16,4 @@ public class OrderQueryDslRepositoryImpl implements OrderQueryDslRepository {
 
     private final JPAQueryFactory queryFactory;
 
-
-    @Override
-    public OrderDetail findOneSlowly(Long seqOrderId) {
-        return queryFactory
-                .select(Projections.constructor(OrderDetail.class,
-                        orderEntity.orderName,
-                        orderEntity.price,
-                        orderEntity.member.id))
-                .from(orderEntity)
-                .where(orderEntity.id.eq(seqOrderId)
-                .and(Expressions.booleanTemplate("function('SLEEP', 10) = 0")))
-                .fetchOne();
-    }
 }
