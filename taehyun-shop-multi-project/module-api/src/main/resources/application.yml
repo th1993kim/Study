@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: api
+  profiles:
+    include: core
+
+management:
+  endpoints:
+    jmx:
+      exposure:
+        include: prometheus
+
+    web:
+      exposure:
+        include: prometheus
+
+  metrics:
+    tags:
+      application: ${spring.application.name}
+      region: seoul
