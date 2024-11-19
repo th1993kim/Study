@@ -1,4 +1,4 @@
-package api.order.api;
+package api.order.api.request;
 
 import core.order.application.command.OrderProductCommand;
 
