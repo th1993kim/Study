@@ -36,7 +36,7 @@ public class OrderEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "seq_member")
     private MemberEntity member;
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "shopOrder")
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "order")
     private PaymentEntity payment;
     @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus;

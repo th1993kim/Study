@@ -31,10 +31,13 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public OrderProductResult orderProduct(OrderProductCommand orderProductCommand) {
-        ProductEntity product = productRepository.findById(orderProductCommand.seqProduct())
-                .orElse(null);
-        validateProduct(product);
-        OrderEntity orderEntity = orderRepository.saveOrder(OrderEntity.builder()
+        ProductEntity product = findProduct(orderProductCommand.seqProduct());
+        OrderEntity orderEntity = createOrder(orderProductCommand, product);
+        return OrderProductResult.of(orderEntity);
+    }
+
+    private OrderEntity createOrder(OrderProductCommand orderProductCommand, ProductEntity product) {
+        return orderRepository.saveOrder(OrderEntity.builder()
                 .product(product)
                 .price(product.getPrice())
                 .member(MemberEntity.builder()
@@ -42,18 +45,29 @@ public class OrderServiceImpl implements OrderService {
                         .build())
                 .orderStatus(OrderStatus.REQUEST)
                 .build());
-
-        return OrderProductResult.of(orderEntity);
     }
 
     @Override
     public OrderCompleteResult orderComplete(OrderCompleteCommand orderCompleteCommand) {
-        OrderEntity order = orderRepository.findOne(orderCompleteCommand.seqOrderId())
-                .orElseThrow(() -> new RuntimeException("존재하지 않는 주문 요청입니다."));
-        ProductEntity product = productRepository.findById(order.getProduct().getId())
-                .orElseThrow(() -> new RuntimeException("존재하지 않는 상품입니다."));
+        OrderEntity order = completeOrder(orderCompleteCommand.seqShopOrder());
+        createPayment(orderCompleteCommand, order);
+        decreaseProductStock(order.getProduct().getId());
+        return new OrderCompleteResult(order.getId());
+    }
 
-        PaymentEntity paymentEntity = PaymentEntity.builder()
+    private OrderEntity completeOrder(long seqShopOrder) {
+        OrderEntity order = findOrder(seqShopOrder);
+        order.success();
+        return order;
+    }
+
+    private void decreaseProductStock(Long seqProduct) {
+        ProductEntity product = findProduct(seqProduct);
+        product.decreaseStock();
+    }
+
+    private void createPayment(OrderCompleteCommand orderCompleteCommand, OrderEntity order) {
+        paymentRepository.save(PaymentEntity.builder()
                 .paymentMethod(orderCompleteCommand.paymentMethod())
                 .amount(order.getPrice())
                 .order(order)
@@ -61,20 +75,22 @@ public class OrderServiceImpl implements OrderService {
                 .paymentCompleteTime(LocalDateTime.now())
                 .paymentRefundedTime(LocalDateTime.now())
                 .regDateTime(LocalDateTime.now())
-                .build();
+                .build());
+    }
 
-        paymentRepository.save(paymentEntity);
-        product.decreaseStock();
-        order.success();
+    private ProductEntity findProduct(Long seqProduct) {
+        ProductEntity product = productRepository.findById(seqProduct)
+                .orElseThrow(() -> new RuntimeException("존재하지 않는 상품입니다."));
+        validateProduct(product);
+        return product;
+    }
 
-        return new OrderCompleteResult(order.getId());
+    private OrderEntity findOrder(Long seqShopOrder) {
+        return orderRepository.findOne(seqShopOrder)
+                .orElseThrow(() -> new RuntimeException("존재하지 않는 주문 요청입니다."));
     }
 
     private void validateProduct(ProductEntity product) {
-        if (product == null) {
-            throw new RuntimeException("존재하지 않는 상품입니다.");
-        }
-
         if (product.getStock() == null || product.getStock() < 1) {
             throw new RuntimeException("수량이 부족하여 상품을 구매할 수 없습니다.");
         }

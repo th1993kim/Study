@@ -4,7 +4,7 @@ import core.payment.entity.PaymentMethod;
 
 public record OrderCompleteCommand (
 
-        long seqOrderId,
+        long seqShopOrder,
         PaymentMethod paymentMethod
 ){
 
