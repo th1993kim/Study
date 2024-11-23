@@ -6,4 +6,6 @@ import java.util.Optional;
 
 public interface ProductRepository {
     Optional<ProductEntity> findById(Long seqProduct);
+
+    ProductEntity save(ProductEntity product);
 }

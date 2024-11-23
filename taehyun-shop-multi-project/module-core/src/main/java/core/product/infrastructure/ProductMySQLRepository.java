@@ -18,4 +18,9 @@ public class ProductMySQLRepository implements ProductRepository {
     public Optional<ProductEntity> findById(Long seqProduct) {
         return productJpaRepository.findById(seqProduct);
     }
+
+    @Override
+    public ProductEntity save(ProductEntity product) {
+        return productJpaRepository.save(product);
+    }
 }

@@ -28,7 +28,6 @@ public class OrderController {
 
     @GetMapping("/{seqOrderId}")
     public ResponseEntity<OrderDetail> getOrder(@PathVariable Long seqOrderId) {
-
         return ResponseEntity.ok(orderViewService.getOrderDetail(seqOrderId));
     }
 

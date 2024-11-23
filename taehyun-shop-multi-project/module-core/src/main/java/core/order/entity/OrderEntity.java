@@ -50,4 +50,8 @@ public class OrderEntity {
     public void success() {
         orderStatus = OrderStatus.COMPLETE;
     }
+
+    public boolean isCompleted() {
+        return OrderStatus.COMPLETE == orderStatus;
+    }
 }

@@ -49,25 +49,38 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public OrderCompleteResult orderComplete(OrderCompleteCommand orderCompleteCommand) {
-        OrderEntity order = completeOrder(orderCompleteCommand.seqShopOrder());
-        createPayment(orderCompleteCommand, order);
-        decreaseProductStock(order.getProduct().getId());
+        // 1. 주문 조회 및 완료 처리
+        OrderEntity order = findOrder(orderCompleteCommand.seqShopOrder());
+        completeOrder(order);
+
+        // 2. 결제 데이터 생성 및 저장
+        PaymentEntity payment = createPayment(orderCompleteCommand, order);
+        paymentRepository.save(payment);
+
+        // 3. 상품 조회 및 수량 감소
+        ProductEntity product = findProduct(order.getProduct().getId());
+        decreaseProductStock(product);
+
+
         return new OrderCompleteResult(order.getId());
     }
 
-    private OrderEntity completeOrder(long seqShopOrder) {
-        OrderEntity order = findOrder(seqShopOrder);
+    private void completeOrder(OrderEntity order) {
+        if (order.isCompleted()) {
+            throw new RuntimeException("주문은 완료된 상품입니다.");
+        }
         order.success();
-        return order;
     }
 
-    private void decreaseProductStock(Long seqProduct) {
-        ProductEntity product = findProduct(seqProduct);
+    private void decreaseProductStock(ProductEntity product) {
+        if (product.getStock() < 1) {
+            throw new RuntimeException("재고가 부족하여 주문을 진행할 수 없습니다.");
+        }
         product.decreaseStock();
     }
 
-    private void createPayment(OrderCompleteCommand orderCompleteCommand, OrderEntity order) {
-        paymentRepository.save(PaymentEntity.builder()
+    private PaymentEntity createPayment(OrderCompleteCommand orderCompleteCommand, OrderEntity order) {
+        return PaymentEntity.builder()
                 .paymentMethod(orderCompleteCommand.paymentMethod())
                 .amount(order.getPrice())
                 .order(order)
@@ -75,7 +88,7 @@ public class OrderServiceImpl implements OrderService {
                 .paymentCompleteTime(LocalDateTime.now())
                 .paymentRefundedTime(LocalDateTime.now())
                 .regDateTime(LocalDateTime.now())
-                .build());
+                .build();
     }
 
     private ProductEntity findProduct(Long seqProduct) {

@@ -38,7 +38,12 @@ public class ProductEntity {
     @LastModifiedDate
     private LocalDateTime updateDateTime;
 
-    public void decreaseStock() {
-        stock--;
+    public boolean decreaseStock() {
+        if (stock > 0) {
+            stock--;
+            return true;
+        }
+
+        return false;
     }
 }
