@@ -11,7 +11,7 @@ spring:
     hikari:
       jdbc-url: jdbc:mysql://localhost:3306/multi?serverTimezone=UTC&characterEncoding=UTF-8
       username: root
-      password:
+      password: 1234
       driver-class-name: com.mysql.cj.jdbc.Driver
       minimum-idle: 500
       maximum-pool-size: 2000

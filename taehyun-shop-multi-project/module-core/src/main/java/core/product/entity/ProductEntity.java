@@ -46,4 +46,8 @@ public class ProductEntity {
 
         return false;
     }
+
+    public void changeStock(Integer stock) {
+        this.stock = stock;
+    }
 }

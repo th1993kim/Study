@@ -23,4 +23,9 @@ public class ProductMySQLRepository implements ProductRepository {
     public ProductEntity save(ProductEntity product) {
         return productJpaRepository.save(product);
     }
+
+    @Override
+    public void decreaseStock(Long id) {
+
+    }
 }
