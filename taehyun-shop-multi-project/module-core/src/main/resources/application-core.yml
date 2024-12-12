@@ -13,8 +13,8 @@ spring:
       username: root
       password: 1234
       driver-class-name: com.mysql.cj.jdbc.Driver
-      minimum-idle: 500
-      maximum-pool-size: 2000
+      minimum-idle: 10
+      maximum-pool-size: 20
       connection-timeout: 60000 # DB 커넥션을 얻기 위한 제한시간
       max-lifetime: 1800000 #
       idle-timeout: 600000 # 최소 커넥션 풀 사이즈 < 최대 커넥션 풀 사이즈 일때, 유휴 상태인 커넥션을 시간이 경과하면 연결을 끊어준다.

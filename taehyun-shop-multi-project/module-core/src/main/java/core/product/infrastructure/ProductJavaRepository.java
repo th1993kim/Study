@@ -10,7 +10,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
 
-@Repository
+//@Repository
 @RequiredArgsConstructor
 public class ProductJavaRepository implements ProductRepository {
 
@@ -34,6 +34,31 @@ public class ProductJavaRepository implements ProductRepository {
     public void decreaseStock(Long id) {
         ProductEntity productEntity = productMap.get(id);
         changeStockWithRock.changeStock(productEntity, -1);
+    }
+
+    @Override
+    public ProductEntity findByIdWithPessimisticReadLock(Long id) {
+        return null;
+    }
+
+    @Override
+    public ProductEntity findByIdWithPessimisticWriteLock(Long id) {
+        return null;
+    }
+
+    @Override
+    public ProductEntity findByIdWithPessimisticForceIncrementLock(Long id) {
+        return null;
+    }
+
+    @Override
+    public ProductEntity findByIdWithOptimisticLock(Long id) {
+        return null;
+    }
+
+    @Override
+    public ProductEntity findByIdWithOptimisticForceIncrementLock(Long id) {
+        return null;
     }
 
     public void setChangeStockWithRock(ChangeStockWithRock changeStockWithRock) {

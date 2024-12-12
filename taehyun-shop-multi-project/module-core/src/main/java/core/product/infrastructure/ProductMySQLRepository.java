@@ -28,4 +28,29 @@ public class ProductMySQLRepository implements ProductRepository {
     public void decreaseStock(Long id) {
 
     }
+
+    @Override
+    public ProductEntity findByIdWithPessimisticReadLock(Long id) {
+        return productJpaRepository.findByIdWithPessimisticReadLock(id);
+    }
+
+    @Override
+    public ProductEntity findByIdWithPessimisticWriteLock(Long id) {
+        return productJpaRepository.findByIdWithPessimisticWriteLock(id);
+    }
+
+    @Override
+    public ProductEntity findByIdWithPessimisticForceIncrementLock(Long id) {
+        return productJpaRepository.findByIdWithPessimisticForceIncrementLock(id);
+    }
+
+    @Override
+    public ProductEntity findByIdWithOptimisticLock(Long id) {
+        return productJpaRepository.findByIdWithOptimisticLock(id);
+    }
+
+    @Override
+    public ProductEntity findByIdWithOptimisticForceIncrementLock(Long id) {
+        return productJpaRepository.findByIdWithOptimisticForceIncrementLock(id);
+    }
 }

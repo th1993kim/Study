@@ -10,6 +10,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.jdbc.Sql;
 
+import java.util.Optional;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -23,21 +24,21 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class ProductRepositoryTest {
 
     @Autowired
-    private ProductRepository productRepository;
+    private ProductRepository productMySqlRepository;
 
     @Autowired
     private EntityManagerFactory entityManagerFactory;
 
     @Test
     void decreaseStock() throws InterruptedException {
-        productRepository.findById(1L)
+        productMySqlRepository.findById(1L)
                 .ifPresent(product -> System.out.println("product = " + product.getId()));
         ExecutorService executorService = Executors.newFixedThreadPool(50);
 
         CountDownLatch countDownLatch = new CountDownLatch(50);
         for (int i = 0; i < 50; i++) {
             executorService.submit(() -> {
-                ProductEntity product = productRepository.findById(1L)
+                ProductEntity product = productMySqlRepository.findById(1L)
                         .orElse(null);
                 if (product != null) {
                     EntityManager entityManager = entityManagerFactory.createEntityManager();
@@ -52,8 +53,18 @@ class ProductRepositoryTest {
 
         countDownLatch.await();
 
-        productRepository.findById(1L)
+        productMySqlRepository.findById(1L)
                 .ifPresent(product -> assertEquals(0, product.getStock()));
 
+    }
+
+
+    @Test
+    void pessimisticReadLock() throws InterruptedException {
+        ProductEntity productEntity = productMySqlRepository.findByIdWithPessimisticReadLock(1L);
+
+        productEntity.decreaseStock();
+
+        Optional<ProductEntity> entity = productMySqlRepository.findById(1L);
     }
 }
