@@ -27,3 +27,7 @@ logging:
     org.hibernate.SQL: DEBUG # SQL 로그 출력
     org.hibernate.type.descriptor.sql.BasicBinder: TRACE # 바인딩 파라미터 로그 출력
     core: DEBUG
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true

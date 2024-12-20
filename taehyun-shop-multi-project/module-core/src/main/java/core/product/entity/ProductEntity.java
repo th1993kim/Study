@@ -25,7 +25,7 @@ public class ProductEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "seq_product")
-    private Long id;
+    private Long seqProduct;
     private String productName;
     private Integer price;
     private Integer stock;

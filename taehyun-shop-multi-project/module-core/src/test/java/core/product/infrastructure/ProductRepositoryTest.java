@@ -32,7 +32,7 @@ class ProductRepositoryTest {
     @Test
     void decreaseStock() throws InterruptedException {
         productMySqlRepository.findById(1L)
-                .ifPresent(product -> System.out.println("product = " + product.getId()));
+                .ifPresent(product -> System.out.println("product = " + product.getSeqProduct()));
         ExecutorService executorService = Executors.newFixedThreadPool(50);
 
         CountDownLatch countDownLatch = new CountDownLatch(50);

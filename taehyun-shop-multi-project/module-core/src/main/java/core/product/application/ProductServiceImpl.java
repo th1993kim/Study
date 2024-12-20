@@ -11,7 +11,7 @@ import org.springframework.transaction.support.TransactionSynchronizationManager
 
 import java.time.LocalDateTime;
 
-@Transactional(isolation = Isolation.REPEATABLE_READ)
+@Transactional(isolation = Isolation.READ_COMMITTED)
 @Service
 @RequiredArgsConstructor
 @Slf4j
@@ -20,42 +20,85 @@ public class ProductServiceImpl implements ProductService {
     private final ProductRepository productRepository;
 
     @Override
-    public void updateProductPessimisticReadLock(Long id) {
-        ProductEntity product = productRepository.findByIdWithPessimisticReadLock(1L);
+    public void updateProductPessimisticReadLock(Long seqProduct) {
+        ProductEntity product = productRepository.findByIdWithPessimisticReadLock(seqProduct);
         product.decreaseStock();
     }
 
     @Override
-    public void updateProductPessimisticWriteLock(Long id) {
+    public void updateProductPessimisticWriteLock(Long seqProduct) {
 
         log.debug("트랜잭션  활성화 여부: {}", TransactionSynchronizationManager.isActualTransactionActive());
-        ProductEntity product = productRepository.findByIdWithPessimisticWriteLock(id);
+        ProductEntity product = productRepository.findByIdWithPessimisticWriteLock(seqProduct);
         log.debug("조회 종료 :{} 쓰레드 :{}", LocalDateTime.now().getNano(), Thread.currentThread().getName());
         product.decreaseStock();
         log.debug("수정 종료 :{} 쓰레드 :{}", LocalDateTime.now().getNano(), Thread.currentThread().getName());
     }
 
     @Override
-    public void updateProductPessimisticForceIncrementLock(Long id) {
+    public void updateProductPessimisticForceIncrementLock(Long seqProduct) {
 
-        ProductEntity product = productRepository.findByIdWithPessimisticForceIncrementLock(1L);
+        ProductEntity product = productRepository.findByIdWithPessimisticForceIncrementLock(seqProduct);
+        log.debug("조회 종료 :{} 쓰레드 :{}", LocalDateTime.now().getNano(), Thread.currentThread().getName());
+        product.decreaseStock();
+        log.debug("수정 종료 :{} 쓰레드 :{}", LocalDateTime.now().getNano(), Thread.currentThread().getName());
+    }
+
+    @Override
+    public void updateProductOptimisticLock(Long seqProduct) {
+        ProductEntity product = productRepository.findByIdWithOptimisticLock(seqProduct);
         product.decreaseStock();
     }
 
     @Override
-    public void updateProductOptimisticLock(Long id) {
-        ProductEntity product = productRepository.findByIdWithOptimisticLock(1L);
+    public void updateProductOptimisticForceIncrementLock(Long seqProduct) {
+        ProductEntity product = productRepository.findByIdWithOptimisticForceIncrementLock(seqProduct);
         product.decreaseStock();
     }
 
     @Override
-    public void updateProductOptimisticForceIncrementLock(Long id) {
-        ProductEntity product = productRepository.findByIdWithOptimisticForceIncrementLock(1L);
+    public void updateProductReadLock(Long seqProduct) {
+        ProductEntity product = productRepository.findByIdWithReadLock(seqProduct);
         product.decreaseStock();
+    }
+
+    @Override
+    public void updateProductWriteLock(Long seqProduct) {
+        ProductEntity product = productRepository.findByIdWithWriteLock(seqProduct);
+        product.decreaseStock();
+    }
+
+    @Override
+    @Transactional(timeout = 3)
+    public void updateProductSharedLock(Long seqProduct) {
+        ProductEntity product = productRepository.findByIdWithSharedLock(seqProduct);
+        product.decreaseStock();
+        productRepository.changeStock(product);
+    }
+
+    @Override
+    public void updateProductExclusiveLock(Long seqProduct) {
+        ProductEntity product = productRepository.findByIdWithExclusiveLock(seqProduct);
+        product.decreaseStock();
+        productRepository.changeStock(product);
+    }
+
+    @Override
+    public void updateProductVersionLock(Long seqProduct) {
+
+    }
+
+    @Override
+    public void updateProductNoneLock(Long seqProduct) {
+        productRepository.findById(seqProduct)
+                .ifPresent(ProductEntity::decreaseStock);
     }
 
     @Override
     public ProductEntity findById(long id) {
         return productRepository.findById(id).orElse(null);
     }
+
+
+
 }

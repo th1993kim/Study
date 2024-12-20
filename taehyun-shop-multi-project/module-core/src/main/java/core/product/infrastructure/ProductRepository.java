@@ -1,9 +1,7 @@
 package core.product.infrastructure;
 
 import core.product.entity.ProductEntity;
-import jakarta.persistence.LockModeType;
-import org.springframework.data.jpa.repository.Lock;
-import org.springframework.data.jpa.repository.Query;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.Optional;
 
@@ -22,4 +20,14 @@ public interface ProductRepository {
     ProductEntity findByIdWithOptimisticLock(Long id);
 
     ProductEntity findByIdWithOptimisticForceIncrementLock(Long id);
+
+    ProductEntity findByIdWithReadLock(Long id);
+
+    ProductEntity findByIdWithWriteLock(Long id);
+
+    ProductEntity findByIdWithSharedLock(Long id);
+
+    int changeStock(ProductEntity productEntity);
+
+    ProductEntity findByIdWithExclusiveLock(Long id);
 }

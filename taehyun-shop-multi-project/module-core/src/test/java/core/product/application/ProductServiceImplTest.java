@@ -1,9 +1,8 @@
 package core.product.application;
 
 import core.product.entity.ProductEntity;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -35,9 +34,7 @@ class ProductServiceImplTest {
         CountDownLatch countDownLatch = new CountDownLatch(20);
         for (int i = 0; i < 20; i++) {
             executorService.execute(() -> {
-                log.debug("Update Start CurrentThread = {}", Thread.currentThread());
                 productService.updateProductPessimisticReadLock(1L);
-                log.debug("Update End CurrentThread = {}", Thread.currentThread());
                 countDownLatch.countDown();
             });
         }
@@ -55,9 +52,7 @@ class ProductServiceImplTest {
         CountDownLatch countDownLatch = new CountDownLatch(20);
         for (int i = 0; i < 20; i++) {
             executorService.execute(() -> {
-                log.debug("Update Start CurrentThread = {}", Thread.currentThread());
                 productService.updateProductPessimisticWriteLock(1L);
-                log.debug("Update End CurrentThread = {}", Thread.currentThread());
                 countDownLatch.countDown();
             });
         }
@@ -70,14 +65,147 @@ class ProductServiceImplTest {
     }
 
     @Test
-    void updateProductPessimisticForceIncrementLock() {
+    void updateProductPessimisticForceIncrementLock() throws InterruptedException {
+        ExecutorService executorService = Executors.newFixedThreadPool(20);
+        CountDownLatch countDownLatch = new CountDownLatch(20);
+        for (int i = 0; i < 20; i++) {
+            executorService.execute(() -> {
+                productService.updateProductPessimisticForceIncrementLock(1L);
+                countDownLatch.countDown();
+            });
+        }
+
+        countDownLatch.await();
+
+        ProductEntity product = productService.findById(1L);
+
+        assertThat(product.getStock()).isEqualTo(0);
     }
 
     @Test
-    void updateProductOptimisticLock() {
+    void updateProductOptimisticLock() throws InterruptedException {
+        ExecutorService executorService = Executors.newFixedThreadPool(20);
+        CountDownLatch countDownLatch = new CountDownLatch(20);
+        for (int i = 0; i < 20; i++) {
+            executorService.execute(() -> {
+                productService.updateProductOptimisticLock(1L);
+                countDownLatch.countDown();
+            });
+        }
+
+        countDownLatch.await();
+
+        ProductEntity product = productService.findById(1L);
+
+        assertThat(product.getStock()).isEqualTo(0);
     }
 
     @Test
-    void updateProductOptimisticForceIncrementLock() {
+    void updateProductOptimisticForceIncrementLock() throws InterruptedException {
+        ExecutorService executorService = Executors.newFixedThreadPool(20);
+        CountDownLatch countDownLatch = new CountDownLatch(20);
+        for (int i = 0; i < 20; i++) {
+            executorService.execute(() -> {
+                productService.updateProductOptimisticForceIncrementLock(1L);
+                countDownLatch.countDown();
+            });
+        }
+
+        countDownLatch.await();
+
+        ProductEntity product = productService.findById(1L);
+
+        assertThat(product.getStock()).isEqualTo(0);
+    }
+    @Test
+    void updateProductReadLock() throws InterruptedException {
+        ExecutorService executorService = Executors.newFixedThreadPool(20);
+        CountDownLatch countDownLatch = new CountDownLatch(20);
+        for (int i = 0; i < 20; i++) {
+            executorService.execute(() -> {
+                productService.updateProductReadLock(1L);
+                countDownLatch.countDown();
+            });
+        }
+
+        countDownLatch.await();
+
+        ProductEntity product = productService.findById(1L);
+
+        assertThat(product.getStock()).isEqualTo(0);
+    }
+    @Test
+    void updateProductWriteLock() throws InterruptedException {
+        ExecutorService executorService = Executors.newFixedThreadPool(20);
+        CountDownLatch countDownLatch = new CountDownLatch(20);
+        for (int i = 0; i < 20; i++) {
+            executorService.execute(() -> {
+                productService.updateProductWriteLock(1L);
+                countDownLatch.countDown();
+            });
+        }
+
+        countDownLatch.await();
+
+        ProductEntity product = productService.findById(1L);
+
+        assertThat(product.getStock()).isEqualTo(0);
+    }
+
+    @Test
+    @DisplayName("락이 존재하지 않는 경우 20개의 스레드가 1개씩 줄여나간다고 해서 0개가 되지 않는다.")
+    void updateProductNoneLock() throws InterruptedException {
+        ExecutorService executorService = Executors.newFixedThreadPool(20);
+        CountDownLatch countDownLatch = new CountDownLatch(20);
+        for (int i = 0; i < 20; i++) {
+            executorService.execute(() -> {
+                productService.updateProductNoneLock(1L);
+                countDownLatch.countDown();
+            });
+        }
+
+        countDownLatch.await();
+
+        ProductEntity product = productService.findById(1L);
+
+        assertThat(product.getStock()).isNotEqualTo(0);
+    }
+
+    @Test
+    @DisplayName("락이 존재하지 않는 경우 20개의 스레드가 1개씩 줄여나간다고 해서 0개가 되지 않는다.")
+    void updateProductSharedLock() throws InterruptedException {
+        ExecutorService executorService = Executors.newFixedThreadPool(20);
+        CountDownLatch countDownLatch = new CountDownLatch(20);
+        for (int i = 0; i < 20; i++) {
+            executorService.execute(() -> {
+                productService.updateProductSharedLock(1L);
+                countDownLatch.countDown();
+            });
+        }
+
+        countDownLatch.await();
+
+        ProductEntity product = productService.findById(1L);
+
+        assertThat(product.getStock()).isEqualTo(0);
+    }
+
+    @Test
+    @DisplayName("락이 존재하지 않는 경우 20개의 스레드가 1개씩 줄여나간다고 해서 0개가 되지 않는다.")
+    void updateProductExclusiveLock() throws InterruptedException {
+        ExecutorService executorService = Executors.newFixedThreadPool(20);
+        CountDownLatch countDownLatch = new CountDownLatch(20);
+        for (int i = 0; i < 20; i++) {
+            executorService.execute(() -> {
+                productService.updateProductExclusiveLock(1L);
+                countDownLatch.countDown();
+            });
+        }
+
+        countDownLatch.await();
+
+        ProductEntity product = productService.findById(1L);
+
+        assertThat(product.getStock()).isEqualTo(0);
     }
 }

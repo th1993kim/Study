@@ -58,7 +58,7 @@ public class OrderServiceImpl implements OrderService {
         paymentRepository.save(payment);
 
         // 3. 상품 조회 및 수량 감소
-        ProductEntity product = findProduct(order.getProduct().getId());
+        ProductEntity product = findProduct(order.getProduct().getSeqProduct());
         decreaseProductStock(product);
 
 

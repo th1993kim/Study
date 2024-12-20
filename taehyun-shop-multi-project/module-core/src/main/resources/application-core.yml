@@ -30,6 +30,7 @@ spring:
         format_sql: true
         dialect: org.hibernate.dialect.MySQLDialect
 
+
 #  threads:
 #    virtual:
 #      enabled: true
@@ -42,3 +43,7 @@ logging:
   level:
     core: debug
     org.hibernate.SQL: debug
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true

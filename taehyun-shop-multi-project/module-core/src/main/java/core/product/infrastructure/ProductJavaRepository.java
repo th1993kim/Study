@@ -3,7 +3,6 @@ package core.product.infrastructure;
 import core.product.entity.ProductEntity;
 import core.product.infrastructure.strategy.ChangeStockWithRock;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -58,6 +57,31 @@ public class ProductJavaRepository implements ProductRepository {
 
     @Override
     public ProductEntity findByIdWithOptimisticForceIncrementLock(Long id) {
+        return null;
+    }
+
+    @Override
+    public ProductEntity findByIdWithReadLock(Long id) {
+        return null;
+    }
+
+    @Override
+    public ProductEntity findByIdWithWriteLock(Long id) {
+        return null;
+    }
+
+    @Override
+    public ProductEntity findByIdWithSharedLock(Long id) {
+        return null;
+    }
+
+    @Override
+    public int changeStock(ProductEntity productEntity) {
+        return 0;
+    }
+
+    @Override
+    public ProductEntity findByIdWithExclusiveLock(Long id) {
         return null;
     }
 

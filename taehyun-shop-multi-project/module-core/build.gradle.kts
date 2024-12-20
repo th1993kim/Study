@@ -19,6 +19,7 @@ dependencies {
     implementation("org.projectlombok:lombok")
     implementation("com.querydsl:querydsl-jpa:5.0.0:jakarta")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    implementation("org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.3")
 
 
     runtimeOnly("com.h2database:h2")
