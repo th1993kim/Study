@@ -1,0 +1,4 @@
+DELETE FROM product;
+ALTER TABLE product AUTO_INCREMENT = 1;
+
+COMMIT;
