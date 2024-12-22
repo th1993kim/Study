@@ -79,8 +79,14 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public void updateProductExclusiveLock(Long seqProduct) {
         ProductEntity product = productRepository.findByIdWithExclusiveLock(seqProduct);
+        if (product.getStock() <= 0) {
+            throw new RuntimeException("재고가 0개보다 적어서 판매가 불가능합니다.");
+        }
         product.decreaseStock();
-        productRepository.changeStock(product);
+        int decreased = productRepository.changeStock(product);
+        if (decreased == 0) {
+            throw new RuntimeException("재고가 부족해 수량 감소에 실패하였습니다.");
+        }
     }
 
     @Override
