@@ -37,11 +37,11 @@ public interface ProductJpaRepository extends JpaRepository<ProductEntity, Long>
     @Query("SELECT product FROM ProductEntity product WHERE product.seqProduct = :seqProduct")
     ProductEntity findByIdWithOptimisticForceIncrementLock(@Param("seqProduct") Long seqProduct);
 
-    @Lock(LockModeType.READ)
+    @Lock(LockModeType.WRITE)
     @Query("SELECT product FROM ProductEntity product WHERE product.seqProduct = :seqProduct")
     ProductEntity findByIdWithWriteLock(@Param("seqProduct") Long seqProduct);
 
-    @Lock(LockModeType.WRITE)
+    @Lock(LockModeType.READ)
     @Query("SELECT product FROM ProductEntity product WHERE product.seqProduct = :seqProduct")
     ProductEntity findByIdWithReadLock(@Param("seqProduct") Long seqProduct);
 }

@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.ColumnDefault;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
@@ -37,6 +38,9 @@ public class ProductEntity {
     private Long updateId;
     @LastModifiedDate
     private LocalDateTime updateDateTime;
+    @Version
+    @ColumnDefault(value = "0")
+    private Long version;
 
     public boolean decreaseStock() {
         if (stock > 0) {
