@@ -1,6 +1,7 @@
 package kuke.board.comment.entity;
 
 
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -11,28 +12,29 @@ import lombok.ToString;
 
 import java.time.LocalDateTime;
 
-@Table(name = "comment")
+@Table(name = "comment_v2")
 @Entity
 @Getter
 @ToString
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Comment {
+public class CommentV2 {
 
     @Id
     private Long commentId;
     private String content;
-    private Long parentCommentId;
+    @Embedded
+    private CommentPath commentPath;
     private Long articleId;
     private Long writerId;
     private Boolean deleted;
     private LocalDateTime createdAt;
 
 
-    public static Comment create(Long commentId, String content, Long parentCommentId, Long articleId, Long writerId) {
-        Comment comment = new Comment();
+    public static CommentV2 create(Long commentId, String content, CommentPath commentPath, Long articleId, Long writerId) {
+        CommentV2 comment = new CommentV2();
         comment.commentId = commentId;
         comment.content = content;
-        comment.parentCommentId = parentCommentId == null ? commentId : parentCommentId;
+        comment.commentPath = commentPath;
         comment.articleId = articleId;
         comment.writerId = writerId;
         comment.deleted = false;
@@ -40,12 +42,12 @@ public class Comment {
         return comment;
     }
 
-    public boolean isRoot() {
-        return this.parentCommentId.equals(commentId);
-    }
 
+    public boolean isRoot() {
+        return commentPath.isRoot();
+    }
     public void delete() {
-        this.deleted = true;
+        deleted = true;
     }
 
 }

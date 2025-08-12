@@ -1,6 +1,7 @@
 package kuke.board.comment.service.response;
 
 import kuke.board.comment.entity.Comment;
+import kuke.board.comment.entity.CommentV2;
 
 import java.time.LocalDateTime;
 
@@ -11,6 +12,7 @@ public record CommentResponse(
         Long articleId,
         Long writerId,
         Boolean deleted,
+        String path,
         LocalDateTime createdAt
 ) {
 
@@ -22,6 +24,19 @@ public record CommentResponse(
                 comment.getArticleId(),
                 comment.getWriterId(),
                 comment.getDeleted(),
+                null,
+                comment.getCreatedAt()
+        );
+    }
+    public static CommentResponse from(CommentV2 comment) {
+        return new CommentResponse(
+                comment.getCommentId(),
+                comment.getContent(),
+                null,
+                comment.getArticleId(),
+                comment.getWriterId(),
+                comment.getDeleted(),
+                comment.getCommentPath().getPath(),
                 comment.getCreatedAt()
         );
     }
