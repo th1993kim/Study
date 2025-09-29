@@ -1,8 +1,12 @@
 package kuke.board.comment.api;
 
+import kuke.board.comment.service.response.CommentPageResponse;
 import kuke.board.comment.service.response.CommentResponse;
 import org.junit.jupiter.api.Test;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.web.client.RestClient;
+
+import java.util.List;
 
 public class CommentApiV2Test {
 
@@ -59,6 +63,37 @@ public class CommentApiV2Test {
                 .body(Void.class);
     }
 
+
+    @Test
+    void readAll() {
+        CommentPageResponse response = restClient.get()
+                .uri("/v2/comments?articleId=1&page=1&pageSize=10")
+                .retrieve()
+                .body(CommentPageResponse.class);
+
+
+        System.out.println("response: " + response);
+    }
+
+    @Test
+    void readAllInfiniteScroll() {
+        List<CommentResponse> response = restClient.get()
+                .uri("/v2/comments/infinite?articleId=1&pageSize=10")
+                .retrieve()
+                .body(new ParameterizedTypeReference<>() {});
+
+
+        System.out.println("response: " + response);
+        String lastPath = response.getLast()
+                .path();
+        List<CommentResponse> secondPage = restClient.get()
+                .uri("/v2/comments/infinite?articleId=1&lastPath=" + lastPath + "&pageSize=10")
+                .retrieve()
+                .body(new ParameterizedTypeReference<>() {});
+
+
+        System.out.println("secondPage: " + secondPage);
+    }
 
 }
 

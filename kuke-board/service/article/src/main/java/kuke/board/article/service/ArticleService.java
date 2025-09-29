@@ -1,7 +1,9 @@
 package kuke.board.article.service;
 
 import kuke.board.article.entity.Article;
+import kuke.board.article.entity.BoardArticleCount;
 import kuke.board.article.repository.ArticleRepository;
+import kuke.board.article.repository.BoardArticleCountRepository;
 import kuke.board.article.service.request.ArticleCreateRequest;
 import kuke.board.article.service.request.ArticleUpdateRequest;
 import kuke.board.article.service.response.ArticlePageResponse;
@@ -18,6 +20,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class ArticleService {
     private final Snowflake snowflake = new Snowflake();
+    private final BoardArticleCountRepository boardArticleCountRepository;
     private final ArticleRepository articleRepository;
 
     @Transactional
@@ -26,6 +29,10 @@ public class ArticleService {
                 Article.create(snowflake.nextId(), request.title(), request.content(), request.boardId(), request.writerId())
         );
 
+        int result = boardArticleCountRepository.increase(article.getBoardId());
+        if (result == 0) {
+            boardArticleCountRepository.save(BoardArticleCount.create(article.getBoardId(), 1L));
+        }
         return ArticleResponse.from(article);
     }
 
@@ -46,7 +53,9 @@ public class ArticleService {
 
     @Transactional
     public void delete(Long articleId) {
-        articleRepository.deleteById(articleId);
+        Article article = articleRepository.findById(articleId).orElseThrow();
+        articleRepository.delete(article);
+        boardArticleCountRepository.decrease(article.getBoardId());
     }
 
 
@@ -71,6 +80,12 @@ public class ArticleService {
         return articles.stream()
                 .map(ArticleResponse::from)
                 .toList();
+    }
+
+    public Long count(Long boardId) {
+        return boardArticleCountRepository.findById(boardId)
+                .map(BoardArticleCount::getArticleCount)
+                .orElse(0L);
     }
 
 }

@@ -7,4 +7,7 @@ public record CommentPageResponse(
         Long commentCount
 ) {
 
+    public static CommentPageResponse of(List<CommentResponse> list, Long count) {
+        return new CommentPageResponse(list, count);
+    }
 }
