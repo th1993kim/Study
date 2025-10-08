@@ -1,8 +1,10 @@
 package kuke.board.comment.service;
 
+import kuke.board.comment.entity.ArticleCommentCount;
 import kuke.board.comment.entity.Comment;
 import kuke.board.comment.entity.CommentPath;
 import kuke.board.comment.entity.CommentV2;
+import kuke.board.comment.repository.ArticleCommentCountRepository;
 import kuke.board.comment.repository.CommentRepositoryV2;
 import kuke.board.comment.service.request.CommentCreateRequestV2;
 import kuke.board.comment.service.response.CommentPageResponse;
@@ -22,6 +24,7 @@ public class CommentServiceV2 {
 
     private final Snowflake snowflake = new Snowflake();
     private final CommentRepositoryV2 commentRepository;
+    private final ArticleCommentCountRepository articleCommentCountRepository;
 
 
     @Transactional
@@ -36,6 +39,13 @@ public class CommentServiceV2 {
                                 .orElse(null)),
                         request.articleId(),
                         request.writerId()));
+
+
+        int result = articleCommentCountRepository.increase(comment.getArticleId());
+
+        if (result == 0) {
+            articleCommentCountRepository.save(ArticleCommentCount.create(comment.getArticleId(), 1L));
+        }
 
         return CommentResponse.from(comment);
     }
@@ -77,6 +87,7 @@ public class CommentServiceV2 {
 
     private void delete(CommentV2 comment) {
         commentRepository.delete(comment);
+        articleCommentCountRepository.decrease(comment.getArticleId());
         if (!comment.isRoot()) {
             commentRepository.findByPath(comment.getCommentPath().getParentPath())
                     .filter(CommentV2::getDeleted)
@@ -105,6 +116,13 @@ public class CommentServiceV2 {
         return comments.stream()
                 .map(CommentResponse::from)
                 .toList();
+    }
+
+    @Transactional(readOnly = true)
+    public Long count(Long articleId) {
+        return articleCommentCountRepository.findById(articleId)
+                .map(ArticleCommentCount::getCommentCount)
+                .orElse(0L);
     }
 
 
