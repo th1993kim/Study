@@ -54,4 +54,8 @@ public class HotArticleListRepository {
                 .map(Long::valueOf)
                 .toList();
     }
+
+    public void remove(Long articleId, LocalDateTime time) {
+        redisTemplate.opsForZSet().remove(generateKey(time), String.valueOf(articleId));
+    }
 }
