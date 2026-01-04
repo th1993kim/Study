@@ -1,4 +1,4 @@
-package kuke.board.common.outboxmessagerelay;
+package kuke.board.outboxmessagerelay;
 
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
@@ -19,7 +19,7 @@ import java.util.concurrent.Executors;
 
 @EnableAsync
 @Configuration
-@ComponentScan("kuke.board.common.outboxmessagerelay")
+@ComponentScan("kuke.board.outboxmessagerelay")
 @EnableScheduling
 public class MessageRelayConfig {
 
@@ -47,6 +47,6 @@ public class MessageRelayConfig {
 
     @Bean
     public Executor messagePublishPendingEventExecutor() {
-        return Executors.newSingleThreadExecutor();
+        return Executors.newSingleThreadScheduledExecutor();
     }
 }

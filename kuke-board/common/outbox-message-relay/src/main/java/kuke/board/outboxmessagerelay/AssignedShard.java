@@ -1,4 +1,4 @@
-package kuke.board.common.outboxmessagerelay;
+package kuke.board.outboxmessagerelay;
 
 import lombok.Getter;
 

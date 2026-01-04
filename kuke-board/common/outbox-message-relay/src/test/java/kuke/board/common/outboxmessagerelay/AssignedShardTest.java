@@ -1,5 +1,6 @@
 package kuke.board.common.outboxmessagerelay;
 
+import kuke.board.outboxmessagerelay.AssignedShard;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
