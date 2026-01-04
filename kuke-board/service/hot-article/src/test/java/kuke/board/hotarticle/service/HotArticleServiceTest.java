@@ -73,7 +73,7 @@ class HotArticleServiceTest {
     void handleEventIfScoredUpdatableEventTest() {
 
         Event event = mock(Event.class);
-        given(event.getType()).willReturn(EventType.ARTICLE_LIKED);
+        given(event.getType()).willReturn(mock(EventType.class));
         EventHandler eventHandler = mock(EventHandler.class);
         given(eventHandler.supports(event)).willReturn(true);
         given(eventHandlerList.stream()).willReturn(Stream.of(eventHandler));
