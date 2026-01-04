@@ -1,18 +1,20 @@
 package kuke.board.view.service;
 
+import kuke.board.common.event.EventType;
+import kuke.board.common.event.payload.ArticleViewedEventPayload;
+import kuke.board.outboxmessagerelay.OutboxEventPublisher;
 import kuke.board.view.repository.ArticleViewCountBackUpRepository;
 import kuke.board.view.repository.entity.ArticleViewCount;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.servlet.View;
 
 @Component
 @RequiredArgsConstructor
 public class ArticleViewCountBackUpProcessor {
 
     private final ArticleViewCountBackUpRepository articleViewCountBackUpRepository;
-    private final View view;
+    private final OutboxEventPublisher outboxEventPublisher;
 
     @Transactional
     public void backUp(Long articleId, Long viewCount) {
@@ -24,5 +26,14 @@ public class ArticleViewCountBackUpProcessor {
                             () -> articleViewCountBackUpRepository.save(ArticleViewCount.init(articleId, viewCount))
                     );
         }
+        outboxEventPublisher.publish(
+                EventType.ARTICLE_VIEWED,
+                ArticleViewedEventPayload.builder()
+                        .articleId(articleId)
+                        .articleViewCount(viewCount)
+                        .build(),
+                articleId
+        );
+
     }
 }
