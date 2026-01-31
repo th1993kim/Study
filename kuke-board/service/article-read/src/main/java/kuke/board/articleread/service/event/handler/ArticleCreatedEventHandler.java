@@ -1,7 +1,9 @@
 package kuke.board.articleread.service.event.handler;
 
+import kuke.board.articleread.repository.ArticleIdListRepository;
 import kuke.board.articleread.repository.ArticleQueryModel;
 import kuke.board.articleread.repository.ArticleQueryModelRepository;
+import kuke.board.articleread.repository.BoardArticleCountRepository;
 import kuke.board.common.event.Event;
 import kuke.board.common.event.EventType;
 import kuke.board.common.event.payload.ArticleCreatedEventPayload;
@@ -14,13 +16,17 @@ import java.time.Duration;
 @Component
 public class ArticleCreatedEventHandler implements EventHandler<ArticleCreatedEventPayload> {
 
+    private final ArticleIdListRepository articleIdListRepository;
     private final ArticleQueryModelRepository articleQueryModelRepository;
+    private final BoardArticleCountRepository boardArticleCountRepository;
 
 
     @Override
     public void handle(Event<ArticleCreatedEventPayload> event) {
         ArticleCreatedEventPayload payload = event.getPayload();
         articleQueryModelRepository.create(ArticleQueryModel.create(payload), Duration.ofDays(1L));
+        articleIdListRepository.add(payload.getBoardId(), payload.getArticleId(), 1000L);
+        boardArticleCountRepository.createOrUpdate(payload.getBoardId(), payload.getBoardArticleCount());
     }
 
     @Override
