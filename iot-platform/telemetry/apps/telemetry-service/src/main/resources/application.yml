@@ -1,0 +1,47 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: telemetry-service
+
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: telemetry-service
+      auto-offset-reset: earliest
+      enable-auto-commit: false
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      properties:
+        spring.json.trusted.packages: "com.example.*"
+    listener:
+      ack-mode: manual
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/telemetry?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    username: app
+    password: app
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        format_sql: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "health,info"
+  endpoint:
+    health:
+      probes:
+        enabled: true
+
+app:
+  kafka:
+    topic: telemetry.raw
+  logstash:
+    url: http://localhost:8080
