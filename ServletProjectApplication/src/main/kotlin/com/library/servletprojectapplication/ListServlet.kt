@@ -21,7 +21,7 @@ class ListServlet : HttpServlet()  {
         writer?.println("<h1>Member List (Servlet)</h1>")
         writer?.println("<ul>")
         for (m in members) {
-            writer?.println("<li>" + m.name + " / " + m.password + "</li>")
+            writer?.println("<li>" + m.username + " / " + m.password + "</li>")
         }
         writer?.println("</ul>")
         writer?.println("<a href='/servlet/registerform'>Go to Register Form</a>")

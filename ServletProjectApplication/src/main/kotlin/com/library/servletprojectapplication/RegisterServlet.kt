@@ -1,5 +1,6 @@
 package com.library.servletprojectapplication
 
+import com.library.servletprojectapplication.model.Member
 import jakarta.servlet.annotation.WebServlet
 import jakarta.servlet.http.HttpServlet
 import jakarta.servlet.http.HttpServletRequest
@@ -15,13 +16,13 @@ class RegisterServlet : HttpServlet()  {
         fun getMemberList(): List<Member> = memberList
     }
 
-    override fun doPost(req: HttpServletRequest?, resp: HttpServletResponse?) {
+    override fun doPost(req: HttpServletRequest, resp: HttpServletResponse) {
 
-        val username = req?.getParameter("username")
-        val password = req?.getParameter("password")
+        val username = req.getParameter("username")
+        val password = req.getParameter("password")
 
-        memberList.add(Member(name = username, password = password))
-        resp?.sendRedirect("/servlet/list")
+        memberList.add(Member(username = username, password = password))
+        resp.sendRedirect("/servlet/list")
     }
 
 
