@@ -1,7 +1,7 @@
-package com.taehyun.domain.product.adapter.out.persistence;
+package com.taehyun.domain.product.infrastructure.persistence;
 
-import com.taehyun.domain.product.application.port.out.ProductPersistencePort;
-import com.taehyun.domain.product.domain.entity.Product;
+import com.taehyun.domain.product.domain.model.Product;
+import com.taehyun.domain.product.domain.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -11,7 +11,7 @@ import java.util.UUID;
 
 @Repository
 @RequiredArgsConstructor
-public class ProductPersistenceAdapter implements ProductPersistencePort {
+public class ProductPersistenceAdapter implements ProductRepository {
 
     private final ProductJpaRepository productJpaRepository;
 

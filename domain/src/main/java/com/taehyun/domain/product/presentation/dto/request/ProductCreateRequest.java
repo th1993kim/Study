@@ -1,4 +1,4 @@
-package com.taehyun.domain.product.adapter.in.web.dto;
+package com.taehyun.domain.product.presentation.dto.request;
 
 import java.math.BigDecimal;
 

@@ -1,11 +1,10 @@
-package com.taehyun.domain.product.service;
+package com.taehyun.domain.product.application.service;
 
-import com.taehyun.domain.product.application.port.in.ProductUseCase;
-import com.taehyun.domain.product.adapter.in.web.dto.ProductCreateRequest;
-import com.taehyun.domain.product.adapter.in.web.dto.ProductUpdateRequest;
-import com.taehyun.domain.product.application.port.out.ProductPersistencePort;
-import com.taehyun.domain.product.domain.entity.Product;
-import com.taehyun.domain.product.adapter.out.persistence.ProductJpaRepository;
+import com.taehyun.domain.product.application.usecase.ProductUseCase;
+import com.taehyun.domain.product.domain.model.Product;
+import com.taehyun.domain.product.domain.repository.ProductRepository;
+import com.taehyun.domain.product.presentation.dto.request.ProductCreateRequest;
+import com.taehyun.domain.product.presentation.dto.request.ProductUpdateRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,7 +17,7 @@ import java.util.UUID;
 @Service
 public class ProductService implements ProductUseCase {
 
-    private final ProductPersistencePort productPersistencePort;
+    private final ProductRepository productPersistencePort;
 
     @Override
     @Transactional

@@ -1,9 +1,9 @@
-package com.taehyun.domain.product.adapter.in.web;
+package com.taehyun.domain.product.presentation.controller;
 
-import com.taehyun.domain.product.adapter.in.web.dto.ProductCreateRequest;
-import com.taehyun.domain.product.adapter.in.web.dto.ProductUpdateRequest;
-import com.taehyun.domain.product.domain.entity.Product;
-import com.taehyun.domain.product.application.port.in.ProductUseCase;
+import com.taehyun.domain.product.presentation.dto.request.ProductCreateRequest;
+import com.taehyun.domain.product.presentation.dto.request.ProductUpdateRequest;
+import com.taehyun.domain.product.domain.model.Product;
+import com.taehyun.domain.product.application.usecase.ProductUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

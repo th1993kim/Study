@@ -1,6 +1,6 @@
-package com.taehyun.domain.product.adapter.out.persistence;
+package com.taehyun.domain.product.infrastructure.persistence;
 
-import com.taehyun.domain.product.domain.entity.Product;
+import com.taehyun.domain.product.domain.model.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

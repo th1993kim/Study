@@ -1,8 +1,8 @@
-package com.taehyun.domain.product.application.port.in;
+package com.taehyun.domain.product.application.usecase;
 
-import com.taehyun.domain.product.adapter.in.web.dto.ProductCreateRequest;
-import com.taehyun.domain.product.adapter.in.web.dto.ProductUpdateRequest;
-import com.taehyun.domain.product.domain.entity.Product;
+import com.taehyun.domain.product.presentation.dto.request.ProductCreateRequest;
+import com.taehyun.domain.product.presentation.dto.request.ProductUpdateRequest;
+import com.taehyun.domain.product.domain.model.Product;
 
 import java.util.List;
 import java.util.UUID;
