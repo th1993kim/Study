@@ -1,23 +1,22 @@
-package com.taehyun.domain.product.application.service;
+package com.taehyun.domain.product.application.command.service;
 
-import com.taehyun.domain.product.application.usecase.ProductUseCase;
+import com.taehyun.domain.product.application.command.usecase.ProductCommandUseCase;
 import com.taehyun.domain.product.domain.model.Product;
-import com.taehyun.domain.product.domain.repository.ProductRepository;
+import com.taehyun.domain.product.domain.repository.command.ProductCommandRepository;
 import com.taehyun.domain.product.presentation.dto.request.ProductCreateRequest;
 import com.taehyun.domain.product.presentation.dto.request.ProductUpdateRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 import java.util.UUID;
 
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
 @Service
-public class ProductService implements ProductUseCase {
+public class ProductCommandService implements ProductCommandUseCase {
 
-    private final ProductRepository productPersistencePort;
+    private final ProductCommandRepository productCommandRepository;
 
     @Override
     @Transactional
@@ -31,22 +30,11 @@ public class ProductService implements ProductUseCase {
                 request.status(),
                 toUuid(request.creatorId(), "creatorId")
         );
-        return productPersistencePort.save(product);
+        return productCommandRepository.save(product);
     }
 
     private UUID toUuid(String creatorId, String prefix) {
         return UUID.fromString(prefix + "_" + creatorId);
-    }
-
-    @Override
-    public Product findById(UUID id) {
-        return productPersistencePort.findById(id)
-                .orElse(null);
-    }
-
-    @Override
-    public List<Product> findAll() {
-        return productPersistencePort.findAll();
     }
 
     @Override
@@ -65,7 +53,7 @@ public class ProductService implements ProductUseCase {
     }
 
     private Product findByIdOrThrow(UUID productId) {
-        return productPersistencePort.findById(productId)
+        return productCommandRepository.findById(productId)
                 .orElseThrow();
     }
 
@@ -73,6 +61,6 @@ public class ProductService implements ProductUseCase {
     @Transactional
     public void delete(UUID productId) {
         Product product = findByIdOrThrow(productId);
-        productPersistencePort.delete(product);
+        productCommandRepository.delete(product);
     }
 }

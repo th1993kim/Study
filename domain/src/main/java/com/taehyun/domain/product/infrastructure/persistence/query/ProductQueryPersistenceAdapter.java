@@ -1,7 +1,8 @@
-package com.taehyun.domain.product.infrastructure.persistence;
+package com.taehyun.domain.product.infrastructure.persistence.query;
 
 import com.taehyun.domain.product.domain.model.Product;
-import com.taehyun.domain.product.domain.repository.ProductRepository;
+import com.taehyun.domain.product.domain.repository.query.ProductQueryRepository;
+import com.taehyun.domain.product.infrastructure.persistence.ProductJpaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -11,14 +12,9 @@ import java.util.UUID;
 
 @Repository
 @RequiredArgsConstructor
-public class ProductPersistenceAdapter implements ProductRepository {
+public class ProductQueryPersistenceAdapter implements ProductQueryRepository {
 
     private final ProductJpaRepository productJpaRepository;
-
-    @Override
-    public Product save(Product product) {
-        return productJpaRepository.save(product);
-    }
 
     @Override
     public Optional<Product> findById(UUID id) {
@@ -28,11 +24,5 @@ public class ProductPersistenceAdapter implements ProductRepository {
     @Override
     public List<Product> findAll() {
         return productJpaRepository.findAll();
-    }
-
-    @Override
-    public void delete(Product product) {
-
-        productJpaRepository.delete(product);
     }
 }
