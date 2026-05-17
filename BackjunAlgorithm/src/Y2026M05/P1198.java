@@ -8,35 +8,30 @@ public class P1198 {
         Scanner scanner = new Scanner(System.in);
         int n = scanner.nextInt();
         int[] inputs = new int[n];
+        int sum = 0;
+        int total = 0;
         for (int i = 0; i < n; i++) {
             inputs[i] = scanner.nextInt();
+            total += inputs[i];
         }
-        System.out.println(solution(0, inputs, new ArrayList<>()) ? "YES" : "NO");
+        if (total % 2 != 0) {
+            System.out.println("NO");
+            return;
+        }
+        System.out.println(solution(0, inputs, sum, total/2) ? "YES" : "NO");
 
     }
 
-    private static boolean solution(int n, int[] inputs, List<Integer> list) {
-        int sum = Arrays.stream(inputs).sum();
-        if (sum % 2 != 0) {
-            return false;
-        }
-        int match = sum / 2;
-        int result = 0;
-        for (Integer i : list) {
-            result += i;
-        }
-        if (result == match) {
+    private static boolean solution(int n, int[] inputs, int sum, int target) {
+        if (sum == target) {
             return true;
-        } else if (n >= inputs.length) {
+        }
+        if (sum > target || n == inputs.length) {
             return false;
         }
 
-        list.add(inputs[n]);
-        boolean tempResult = solution(n + 1, inputs, list);
+        boolean tempResult = solution(n + 1, inputs, sum + inputs[n], target);
         if (tempResult) {return true;}
-        list.remove(list.size() - 1);
-        tempResult = solution(n + 1, inputs, list);
-        if (tempResult) {return true;}
-        return false;
+        return solution(n + 1, inputs, sum, target);
     }
 }
