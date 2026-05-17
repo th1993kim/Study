@@ -1,9 +1,7 @@
 package Y2026M05;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
 import java.util.Scanner;
+import java.util.Arrays;
 
 public class P1177 {
 
@@ -13,21 +11,31 @@ public class P1177 {
         int N = scanner.nextInt();
         int M = scanner.nextInt();
 
-        List<Integer> inputs = new ArrayList<>();
+        int[] inputs = new int[N];
         for (int i = 0; i < N; i++) {
-            inputs.add(scanner.nextInt());
+            inputs[i] = scanner.nextInt();
         }
 
-        solution(inputs, M);
+        System.out.println(solution(inputs, M));
     }
 
-    private static void solution(List<Integer> inputs, int m) {
-        inputs.sort(Comparator.naturalOrder());
-        for (int i = 0; i < inputs.size(); i++) {
-            if (inputs.get(i) == m) {
-                System.out.println(i + 1);
-                return;
+    private static int solution(int[] inputs, int m) {
+        Arrays.sort(inputs);
+        int lt = 0;
+        int rt = inputs.length - 1;
+        int ans = 0;
+        while (lt <= rt) {
+            int mid = (lt + rt) / 2;
+            if (inputs[mid] == m) {
+                ans = mid + 1;
+                break;
+            } else if(inputs[mid] < m) {
+                lt = mid + 1;
+            } else {
+                rt = mid - 1;
             }
         }
+
+        return ans;
     }
 }
