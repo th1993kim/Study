@@ -4,31 +4,34 @@ import java.util.Scanner;
 
 public class P1199 {
 
+    static int answer = Integer.MIN_VALUE, n, max;
+
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
 
-        int max = scanner.nextInt();
-        int n = scanner.nextInt();
+        max = scanner.nextInt();
+        n = scanner.nextInt();
 
         int[] array = new int[n];
         int sum = 0;
         for (int i = 0; i < n; i++) {
             array[i] = scanner.nextInt();
         }
-
-        System.out.println(solution(array, max, sum, 0));
+        solution(0, array, sum);
+        System.out.println(answer);
     }
 
-    private static int solution(int[] array, int max, int sum, int n) {
+    private static void solution(int level, int[] array, int sum) {
 
 
         if (sum > max) {
-            return 0;
-        } else if (n == array.length) {
-            return sum;
+            return;
+        } else if (n == level) {
+            answer = Math.max(answer, sum);
         } else {
-            return Math.max(solution(array, max, sum + array[n], n + 1), solution(array, max, sum, n + 1));
+            solution(level + 1, array, sum + array[level]);
+            solution(level + 1, array, sum);
         }
     }
 }
