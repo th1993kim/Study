@@ -14,60 +14,64 @@ public class P1206 {
 
     static int[] xMove = {1, 0, -1, 0};
     static int[] yMove = {0, 1, 0, -1};
-    static int total, count;
+    static int n,m;
+    static int total, answer;
+    static int[][] board, dis;
+    static Queue<Point> queue = new LinkedList<>();
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int m = scanner.nextInt();
-        int n = scanner.nextInt();
-        int[][] arr = new int[n][m];
+        m = scanner.nextInt();
+        n = scanner.nextInt();
+        board = new int[n][m];
+        dis = new int[n][m];
 
-        Queue<List<Point>> queue = new LinkedList<>();
-        List<Point> pointList = new ArrayList<>();
+
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
-                arr[i][j] = scanner.nextInt();
-                if (arr[i][j] == 1) {
-                    pointList.add(new Point(i, j));
+                board[i][j] = scanner.nextInt();
+                if (board[i][j] == 1) {
+                    queue.add(new Point(i, j));
                 }
-                if (arr[i][j] == 0) {
+                if (board[i][j] == 0) {
                     total++;
                 }
             }
         }
-        queue.add(pointList);
 
         if (total == 0) {
             System.out.println(0);
         }
-        solution(queue, arr);
+        solution();
         if (total > 0) {
             System.out.println(-1);
         } else {
-            System.out.println(count);
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < m; j++) {
+                    answer = Math.max(answer, dis[i][j]);
+                }
+            }
+            System.out.println(answer);
         }
     }
 
-    private static void solution(Queue<List<Point>> queue, int[][] arr) {
+    private static void solution() {
         while(!queue.isEmpty()) {
 
-            List<Point> pointList = queue.poll();
-            List<Point> newPointList = new ArrayList<>();
-            for (Point point : pointList) {
-                for(int i = 0; i < 4; i++) {
-                    int dx = point.x + xMove[i];
-                    int dy = point.y + yMove[i];
+            Point point = queue.poll();
 
-                    if (dx >= 0 && dy >= 0 && dy < arr[0].length && dx < arr.length && arr[dx][dy] == 0) {
-                        arr[dx][dy] = 1;
-                        total--;
-                        newPointList.add(new Point(dx, dy));
-                    }
+            for(int i = 0; i < 4; i++) {
+                int dx = point.x + xMove[i];
+                int dy = point.y + yMove[i];
+
+                if (dx >= 0 && dy >= 0 && dy < m && dx < n && board[dx][dy] == 0) {
+                    board[dx][dy] = 1;
+                    total--;
+                    queue.add(new Point(dx, dy));
+                    dis[dx][dy] = dis[point.x][point.y] + 1;
                 }
             }
-            if (!newPointList.isEmpty()) {
-                queue.add(newPointList);
-                count++;
-            }
+
         }
     }
 
