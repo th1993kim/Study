@@ -14,14 +14,15 @@ public class P1208 {
 
     }
 
-    static int answer, n , m, size;
-    static int[] dis;
+    static int answer = Integer.MAX_VALUE;
+    static int n, m;
     static List<Point> pizzaList, customerList;
+    static int[] selected;
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         n = scanner.nextInt();
         m = scanner.nextInt();
-
+        selected = new int[m];
         pizzaList = new ArrayList<>();
         customerList = new ArrayList<>();
         for (int i=1; i<=4; i++) {
@@ -37,35 +38,29 @@ public class P1208 {
             }
         }
 
-        dis = new int[customerList.size() + 1];
-        for (int i = 0; i < dis.length; i++) {
-            if (i != 0) {
-                dis[i] = Integer.MAX_VALUE;
-            }
-        }
-        int[] pizzaSelect = new int[pizzaList.size() + 1];
-        dfs(0, pizzaSelect, 0);
-
-        for (int di : dis) {
-            answer += di;
-        }
+        dfs(0, 0);
         System.out.println(answer);
     }
 
-    private static void dfs(int level, int[] pizzaSelect, int selectSize) {
-        if (selectSize > 4 || level >= 6) {
-            return;
-        } else {
-            if (level > 0 && pizzaSelect[level] == 1) {
-                Point pizza = pizzaList.get(level - 1);
-                for (int i = 0; i < customerList.size(); i++) {
-                    dis[i+1] = Math.min(dis[i+1], calculateDis(pizza, customerList.get(i)));
+    private static void dfs(int level, int startPoint) {
+        if (level == 4) {
+            int sum = 0;
+
+            for (Point customer : customerList) {
+
+                int dis = Integer.MAX_VALUE;
+                for (int i : selected) {
+                    Point pizza = pizzaList.get(i);
+                    dis = Math.min(dis, calculateDis(pizza, customer));
                 }
+                sum += dis;
             }
-            pizzaSelect[level + 1] = 1;
-            dfs(level + 1, pizzaSelect, size + 1);
-            pizzaSelect[level + 1] = 0;
-            dfs(level + 1, pizzaSelect, size - 1);
+            answer = Math.min(answer, sum);
+        } else {
+            for (int i = startPoint; i < pizzaList.size(); i++) {
+                selected[level] = i;
+                dfs(level + 1, i + 1);
+            }
         }
     }
 
