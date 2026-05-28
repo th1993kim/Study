@@ -11,17 +11,22 @@ public class P1217 {
     static List<Time> timeList = new ArrayList<>();
 
     static class Time implements Comparable<Time>{
-        int start, end;
+        int time;
+        String state;
 
-        public Time(int start, int end) {
-            this.start = start;
-            this.end = end;
+        public Time(int time, String state) {
+            this.time = time;
+            this.state = state;
         }
 
         @Override
         public int compareTo(Time time) {
-            if (this.end == time.end) return time.start - this.start;
-            else return time.end - this.end;
+            if (this.time == time.time) {
+                if (this.state.equals(time.state)) return 0;
+                if (this.state.equals("OUT")) return -1;
+                else return 1;
+            }
+            return this.time - time.time;
         }
     }
 
@@ -30,8 +35,10 @@ public class P1217 {
         n = scanner.nextInt();
 
         for (int i = 0; i < n; i++) {
-            Time time = new Time(scanner.nextInt(), scanner.nextInt());
-            timeList.add(time);
+            Time inTime = new Time(scanner.nextInt(), "IN");
+            timeList.add(inTime);
+            Time outTime = new Time(scanner.nextInt(), "OUT");
+            timeList.add(outTime);
         }
 
         solution();
@@ -42,9 +49,14 @@ public class P1217 {
     private static void solution() {
         Collections.sort(timeList);
 
-        Time max =
+        int cnt = 0;
         for (Time time : timeList) {
-
+            if ("IN".equals(time.state)) {
+                cnt++;
+                answer = Math.max(answer, cnt);
+            } else {
+                cnt--;
+            }
         }
     }
 }
