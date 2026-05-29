@@ -5,7 +5,8 @@ import java.util.Scanner;
 
 public class P1201 {
 
-    static int answer;
+    static int answer = Integer.MAX_VALUE;
+    static int target;
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int count = scanner.nextInt();
@@ -13,23 +14,26 @@ public class P1201 {
         for (int i = 0; i < count; i++) {
             coins[i] = scanner.nextInt();
         }
-        int target = scanner.nextInt();
+        target = scanner.nextInt();
 
-        solution(coins, target);
+        dfs(0, coins);
         System.out.println(answer);
     }
 
-    private static void solution(int[] coins, int target) {
-        Arrays.sort(coins);
+    private static void dfs(int level, int[] coins) {
 
-
-        for (int i = coins.length - 1; i >= 0 ; i--) {
-            int maxCoin = 0;
-            while (target - coins[i] >= 0 || maxCoin + coins[i] <= 100) {
-                target = target - coins[i];
-                answer++;
-                maxCoin += coins[i];
+        if (target == 0) {
+            answer = Math.min(answer, level);
+            return;
+        } else {
+            for (int i = 0; i < coins.length; i++) {
+                if (target - coins[i] >= 0) {
+                    target -= coins[i];
+                    dfs(level + 1, coins);
+                    target += coins[i];
+                }
             }
         }
     }
+
 }
