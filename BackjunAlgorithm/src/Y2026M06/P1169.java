@@ -1,8 +1,7 @@
 package Y2026M06;
 
-import java.util.HashSet;
+import java.util.Arrays;
 import java.util.Scanner;
-import java.util.Set;
 
 public class P1169 {
 
@@ -10,7 +9,7 @@ public class P1169 {
         Scanner scanner = new Scanner(System.in);
         int member = scanner.nextInt();
 
-        Integer[] favoriteNumbers = new Integer[member];
+        int[] favoriteNumbers = new int[member];
 
         for (int i = 0; i < member; i++) {
             favoriteNumbers[i] = scanner.nextInt();
@@ -21,11 +20,10 @@ public class P1169 {
 
     }
 
-    private static String solution(Integer[] favoriteNumbers) {
-        Set<Integer> numberSet = new HashSet<>();
-        for (Integer number : favoriteNumbers) {
-            if (numberSet.contains(number)) return "D";
-            numberSet.add(number);
+    private static String solution(int[] favoriteNumbers) {
+        Arrays.sort(favoriteNumbers);
+        for (int i = 0; i < favoriteNumbers.length - 1; i++) {
+            if (favoriteNumbers[i] == favoriteNumbers[i + 1]) return "D";
         }
         return "U";
     }
