@@ -20,17 +20,18 @@ public class P1130 {
 
     private static int solution(int n, int k, int[] sales) {
 
-        int max = 0;
-        // i < 7
-        for (int i = 0; i < n -k ; i++) {
-            int sum = 0;
-            // j < 10
-            for (int j = i; j < i + k; j++) {
-                sum += sales[j];
-            }
-            max = Math.max(max, sum);
+        int answer = 0;
+        int sum = 0;
+        for (int i = 0; i < k; i++) {
+            sum += sales[i];
+        }
+        answer = sum;
+
+        for (int i = k; i < n; i++) {
+            sum += sales[i] - sales[i-k];
+            answer = Math.max(answer, sum);
         }
 
-        return max;
+        return answer;
     }
 }
