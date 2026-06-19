@@ -23,26 +23,15 @@ public class P1131 {
         int answer = 0;
         int sum = 0;
         int lt = 0;
-        int rt = 0;
-        sum += numbers[rt++];
-        while(lt < n && rt < n) {
-            if (sum == m) {
-                answer++;
-                sum += numbers[rt++];
-            } else if (sum < m) {
-                sum += numbers[rt++];
-            } else {
+        for (int rt = 0; rt < n; rt++) {
+            sum += numbers[rt];
+            if (sum == m) answer++;
+
+            while (sum >= m) {
                 sum -= numbers[lt++];
+                if (sum == m) answer++;
             }
         }
-
-        while (lt < n) {
-            if (sum == m) {
-                answer++;
-            }
-            sum -= numbers[lt++];
-        }
-
         return answer;
     }
 
