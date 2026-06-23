@@ -20,30 +20,23 @@ public class P1142 {
 
         int answer = 0;
         int lt = 0;
-        Map<Character, Integer> map = new HashMap<>();
-        for (int rt = word.length() - 1; rt < fullText.length(); rt++) {
-            Map<Character, Integer> wordMap = new HashMap<>();
-            for (int i = 0; i < word.length(); i++) {
-                wordMap.put(word.charAt(i), wordMap.getOrDefault(word.charAt(i), 0) + 1);
-            }
+        Map<Character, Integer> resultMap = new HashMap<>();
+        Map<Character, Integer> wordMap = new HashMap<>();
+        int wordLength = word.length();
+        for (int i = 0; i < wordLength; i++) {
+            wordMap.put(word.charAt(i), wordMap.getOrDefault(word.charAt(i), 0) + 1);
+        }
 
-            while(rt - lt + 1 > word.length()) {
-                lt++;
-            }
+        for (int i = 0; i < wordLength - 1; i++) {
+            resultMap.put(fullText.charAt(i), resultMap.getOrDefault(fullText.charAt(i), 0) + 1);
+        }
 
-            for (int i = lt; i <= rt; i++) {
-                Integer wordCount = wordMap.get(fullText.charAt(i));
-                if (wordCount == null || wordCount <= 1) {
-                    wordMap.remove(fullText.charAt(i));
-                } else {
-                    wordMap.put(fullText.charAt(i), wordCount - 1);
-                }
-            }
-            wordMap.equals()
-
-            if (wordMap.isEmpty()) {
-                answer++;
-            }
+        for (int rt = wordLength - 1; rt < fullText.length(); rt++) {
+            resultMap.put(fullText.charAt(rt), resultMap.getOrDefault(fullText.charAt(rt), 0) + 1);
+            if (resultMap.equals(wordMap)) answer++;
+            resultMap.put(fullText.charAt(lt), resultMap.get(fullText.charAt(lt)) - 1);
+            if (resultMap.get(fullText.charAt(lt)) == 0) resultMap.remove(fullText.charAt(lt));
+            lt++;
         }
 
         return answer;
