@@ -1,5 +1,7 @@
 package Y2026M06;
 
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Scanner;
 
 public class P1158 {
@@ -16,16 +18,20 @@ public class P1158 {
     private static String solution(String sequence, String lettcture) {
         char[] charArray = sequence.toCharArray();
 
-        int index = 0;
+        Queue<Character> queue = new LinkedList<>();
+        for (int i = 0; i < charArray.length; i++) queue.offer(charArray[i]);
         for (int i = 0; i < lettcture.length(); i++) {
-            if (charArray[index] == lettcture.charAt(i)) {
-                index++;
-                if (index == charArray.length) {
-                    return "YES";
+            char schedule = lettcture.charAt(i);
+            if (queue.contains(schedule)) {
+                if (!queue.poll().equals(schedule)) {
+                    return "NO";
                 }
             }
         }
 
-        return "NO";
+        if (!queue.isEmpty()) return "NO";
+
+
+        return "YES";
     }
 }
