@@ -1,51 +1,43 @@
 package Y2026M06;
 
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class P1201 {
 
+    static int answer = Integer.MAX_VALUE;
+    static int n,m = 0;
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int n = scanner.nextInt();
-        int[] coins = new int[n];
+        n = scanner.nextInt();
+        Integer[] coins = new Integer[n];
         for (int i = 0; i < n; i++) {
             coins[i] = scanner.nextInt();
         }
-        int m = scanner.nextInt();
-        int[] check = new int[m+1];
-        int answer = solution(n, m, coins, check);
+        m = scanner.nextInt();
+        Arrays.sort(coins, Collections.reverseOrder());
+        dfs(0, 0, coins);
 
         System.out.println(answer);
     }
 
-    private static int solution(int n, int m, int[] coins, int[] check) {
-
-        Queue<Integer> queue = new LinkedList<>();
-        for (int i = 0; i < n; i++) {
-            queue.offer(coins[i]);
-            check[coins[i]] = 1;
+    private static void dfs(int level, int sum, Integer[] coins) {
+        if (answer <= level) {
+            return;
         }
-        int answer = 1;
-        while (!queue.isEmpty()) {
-            int queueSize = queue.size();
-
-            for (int i = 0; i < queueSize; i++) {
-                int coin = (int) queue.poll();
-                if (coin == m) return answer;
-
-                for (int j = 0; j < n; j++) {
-                    int nextCoin = coin + coins[j];
-                    if (nextCoin <= m && check[nextCoin] == 0) {
-                        check[nextCoin] = 1;
-                        queue.offer(nextCoin);
-                    }
-                }
+        if (sum == m) {
+            answer = level;
+            return;
+        }
+        if (sum > m) {
+            return;
+        } else {
+            for (int i = 0; i < n; i++) {
+                dfs(level + 1, sum + coins[i], coins);
             }
-            answer++;
         }
-
-        return answer;
     }
+
 }
