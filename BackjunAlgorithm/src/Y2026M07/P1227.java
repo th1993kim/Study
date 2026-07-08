@@ -19,12 +19,10 @@ public class P1227 {
         arr[1] = 1;
         arr[2] = 2;
 
-        return recursive(n, arr);
-    }
+        for (int i = 3; i <= n; i++) {
+            arr[i] = arr[i - 1] + arr[i -2];
+        }
 
-    private static int recursive(int n, int[] arr) {
-        if (arr[n] != 0) return arr[n];
-
-        return arr[n] = recursive(n-1, arr) + recursive(n-2, arr);
+        return arr[n];
     }
 }
