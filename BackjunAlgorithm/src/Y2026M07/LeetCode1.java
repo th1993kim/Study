@@ -1,5 +1,8 @@
 package Y2026M07;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class LeetCode1 {
 
     public static void main(String[] args) {
@@ -17,12 +20,14 @@ public class LeetCode1 {
     }
 
     public int[] twoSum(int[] nums, int target) {
-
+        Map<Integer, Integer> numberMap = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
-            for (int j = i + 1; j < nums.length; j++) {
-                if (nums[i] + nums[j] == target) {
-                    return new int[]{i, j};
-                }
+
+            int checkNumber = target - nums[i];
+            if (numberMap.containsKey(checkNumber)) {
+                return new int[]{numberMap.get(checkNumber), i};
+            } else {
+                numberMap.put(nums[i], i);
             }
         }
 
