@@ -11,19 +11,16 @@ public class NeetCode10 {
 
             int lt = 0;
             int rt = s.length() - 1;
-            String upperCase = s.toUpperCase();
-            while (lt <= rt) {
-                if (!Character.isAlphabetic(upperCase.charAt(lt)) && !Character.isDigit(upperCase.charAt(lt))) {
+            while (lt < rt) {
+                while(lt < rt && !Character.isLetterOrDigit(s.charAt(lt))){
                     lt++;
-                    continue;
                 }
 
-                if (!Character.isAlphabetic(upperCase.charAt(rt)) && !Character.isDigit(upperCase.charAt(rt))) {
+                while(lt < rt && !Character.isLetterOrDigit(s.charAt(rt))) {
                     rt --;
-                    continue;
                 }
 
-                if (upperCase.charAt(lt) != upperCase.charAt(rt)) {
+                if (Character.toUpperCase(s.charAt(lt)) != Character.toUpperCase(s.charAt(rt))) {
                     return false;
                 }
                 lt++;
