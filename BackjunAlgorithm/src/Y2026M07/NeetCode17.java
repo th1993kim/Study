@@ -5,25 +5,22 @@ public class NeetCode17 {
         public int[] productExceptSelf(int[] nums) {
 
 
-            int[] answer = new int[nums.length];
-            int[] leftEx = new int[nums.length];
-            int[] rightEx = new int[nums.length];
+            int n = nums.length;
+            int[] answer = new int[n];
 
-            for (int i = 0; i < nums.length; i++) {
-                if (i == 0) {
-                    leftEx[i] = 1;
-                    rightEx[nums.length - 1] = 1;
-                } else {
-                    leftEx[i] = leftEx[i-1] * nums[i-1];
-                    rightEx[nums.length - i -1] = rightEx[nums.length - i] * nums[nums.length-i];
-                }
+            answer[0] = 1;
+            for (int i = 1; i < n; i++) {
+                answer[i] = answer[i-1] * nums[i-1];
             }
 
-            for (int i = 0; i < nums.length; i++) {
-                answer[i] = leftEx[i] * rightEx[i];
+            int rightEx = 1;
+            for (int i = n -2; i >= 0; i--) {
+                rightEx = rightEx * nums[i+1];
+                answer[i] = answer[i] * rightEx;
             }
 
             return answer;
+
         }
     }
 
