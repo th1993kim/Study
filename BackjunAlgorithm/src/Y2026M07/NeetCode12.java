@@ -24,7 +24,6 @@ public class NeetCode12 {
                 sb.append(str.length());
                 sb.append(",");
                 sb.append(str);
-                sb.append(",");
             }
 
             return sb.toString();
@@ -51,9 +50,6 @@ public class NeetCode12 {
                     sb.append(str.charAt(i));
                     i++;
                     count--;
-                }
-                if (str.charAt(i) == ',') {
-                    i++;
                 }
                 answer.add(sb.toString());
                 sb.delete(0, sb.length());
