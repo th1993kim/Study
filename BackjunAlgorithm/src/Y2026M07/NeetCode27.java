@@ -14,43 +14,25 @@ public class NeetCode27 {
 
     class Solution {
         public ListNode removeNthFromEnd(ListNode head, int n) {
-            // 역정렬
-            ListNode previous = null;
-            ListNode current = head;
-            while (current != null) {
-                ListNode next = current.next;
-                current.next = previous;
-                previous = current;
-                current = next;
+            // 더미 생성
+            ListNode dummy = new ListNode(0, head);
+            // 현재, N칸앞 노드 생성
+            ListNode slow = dummy;
+            ListNode fast = dummy;
+            for (int i = 0; i < n; i++) {
+                fast = fast.next;
+            }
+            // 빠른쪽이 종착하는 위치에서 종료
+            while (fast.next != null) {
+                slow = slow.next;
+                fast = fast.next;
             }
 
-            // N만큼 깊이 탐색
-            ListNode newHead = previous;
-            ListNode twoHead = newHead;
-            previous = null;
-            for (int i = 0; i < n - 1; i++) {
-                previous = twoHead;
-                twoHead = twoHead.next;
-            }
-            // 이전노드와 다음노드를 연결
-            if (previous != null) {
-                previous.next = twoHead.next;
-            } else {
-                newHead = twoHead.next;
-            }
-            twoHead.next = null;
 
-            // 다시 역정렬
-            previous = null;
-            current = newHead;
-            while (current != null) {
-                ListNode next = current.next;
-                current.next = previous;
-                previous = current;
-                current = next;
-            }
+            // 현재 노드의 다음 연결 노드와 다음다음 노드를 연결
+            slow.next = slow.next.next;
 
-            return previous;
+            return dummy.next;
         }
     }
 
