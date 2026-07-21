@@ -20,27 +20,38 @@ public class NeetCode28 {
         public Node copyRandomList(Node head) {
             if (head == null) return null;
 
-            //인덱스 & Node Map생성한다.
-            Node current = head;
-            Map<Node, Node> nodeMap = new HashMap<>();
-            //반복문을 통해 인덱스 + 노드(depCopy)맵을 만든다.
-            Node dummy = new Node(0);
-            Node dummyCurrent = dummy;
-            while (current != null) {
-                dummyCurrent.next = new Node(current.val);
-                nodeMap.put(current, dummyCurrent.next);
-                dummyCurrent = dummyCurrent.next;
-                current = current.next;
+            //새로운 노드를 만들어서 연결한다.
+            Node temp = head;
+
+            while(temp != null) {
+                Node temp2 = new Node(temp.val);
+                temp2.next = temp.next;
+                temp.next = temp2;
+                temp = temp2.next;
             }
 
-            // 다시 한번 반복문을 통해 Map의 노드와 연결짓는다.
-            current = head;
-            while (current != null) {
-                Node newNode = nodeMap.get(current);
-                newNode.next = nodeMap.get(current.next);
-                newNode.random = nodeMap.get(current.random);
-                current = current.next;
+            //random을 저장한다.
+            temp = head;
+            while (temp != null) {
+                if (temp.random != null) {
+                    temp.next.random = temp.random.next;
+                }
+                temp = temp.next.next;
             }
+
+
+            //노드를 분리한다.
+            temp = head;
+            Node dummy = new Node(0);
+            Node res = dummy;
+            while (temp != null) {
+                Node nextTemp = temp.next.next;
+                res.next = temp.next;
+                temp.next = nextTemp;
+                temp = temp.next;
+                res = res.next;
+            }
+
 
             return dummy.next;
         }
