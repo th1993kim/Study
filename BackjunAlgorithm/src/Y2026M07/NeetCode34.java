@@ -19,14 +19,10 @@ public class NeetCode34 {
 
     class Solution {
         public int maxDepth(TreeNode root) {
-            return calculateMaxDepth(root, 0);
+            if (root == null) return 0;
+
+            return Math.max(maxDepth(root.left), maxDepth(root.right)) + 1;
         }
 
-        private int calculateMaxDepth(TreeNode root, int depth) {
-            if (root == null) return depth;
-
-            return Math.max(calculateMaxDepth(root.left, depth + 1), calculateMaxDepth(root.right, depth + 1));
-        }
     }
-
 }
