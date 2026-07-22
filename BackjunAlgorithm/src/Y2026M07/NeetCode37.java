@@ -19,19 +19,13 @@ public class NeetCode37 {
 
     class Solution {
         public boolean isSameTree(TreeNode p, TreeNode q) {
-            if (p == null && q == null) {
-                return true;
-            }
-            if (p == null && q != null) {
-                return false;
-            } else if (p != null && q == null) {
-                return false;
-            }
+            if (p == null && q == null) return true;
 
-            boolean leftResult = isSameTree(p.left, q.left);
-            boolean rightResult = isSameTree(p.right, q.right);
+            if (p == null || q == null) return false;
 
-            return p.val == q.val && leftResult && rightResult;
+            if (p.val != q.val) return false;
+
+            return isSameTree(p.left, q.left) && isSameTree(p.right, p.right);
         }
     }
 
