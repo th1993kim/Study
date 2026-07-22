@@ -18,53 +18,21 @@ public class NeetCode32 {
             ListNode dummy = new ListNode();
             // current = dummy로 넣는다.
             ListNode current = dummy;
-            // l1 노드와 l2 노드를 합산하여 current.next에 넣는다.
-            int addNumber = 0;
-            while (l1 != null && l2 != null) {
-                int additionalNumber = addNumber;
-                if (addNumber > 0){
-                    addNumber--;
-                }
-                current.next = new ListNode((l1.val + l2.val + additionalNumber) % 10);
-                if ((l1.val + l2.val + additionalNumber) / 10 > 0) {
-                    addNumber++;
-                }
-                l1 = l1.next;
-                l2 = l2.next;
+            // l1 노드와 l2 노드를 + 올림수 합산하여 current.next에 넣는다.
+            int carry = 0;
+            while (l1 != null || l2 != null || carry > 0) {
+
+                int l1Val = l1 == null ? 0 : l1.val;
+                int l2Val = l2 == null ? 0 : l2.val;
+
+                int sum = (l1Val + l2Val + carry) % 10;
+                carry = (l1Val + l2Val + carry) / 10;
+                current.next = new ListNode(sum);
+
+                if (l1 != null) l1 = l1.next;
+                if (l2 != null) l2 = l2.next;
                 current = current.next;
             }
-
-            while (l1 != null) {
-                int additionalNumber = addNumber;
-                if (addNumber > 0){
-                    addNumber--;
-                }
-                current.next = new ListNode((l1.val + additionalNumber) % 10);
-                if ((l1.val + additionalNumber) / 10 > 0) {
-                    addNumber++;
-                }
-                l1 = l1.next;
-                current = current.next;
-            }
-
-
-            while (l2 != null) {
-                int additionalNumber = addNumber;
-                if (addNumber > 0){
-                    addNumber--;
-                }
-                current.next = new ListNode((l2.val + additionalNumber) % 10);
-                if ((l2.val + additionalNumber) / 10 > 0) {
-                    addNumber++;
-                }
-                l2 = l2.next;
-                current = current.next;
-            }
-            if (addNumber > 0) {
-                current.next = new ListNode(addNumber);
-            }
-            // (l1 + l2) % 10 은 current.next에 넣고 (l1 + l2) / 10 > 0 이면
-            // 다음 node 계산시 1를 첨가 해주거나 다음 노드가 없을시 next에 새로 생성해준다.
 
             return dummy.next;
         }
