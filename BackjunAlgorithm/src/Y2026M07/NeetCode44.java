@@ -28,17 +28,16 @@ public class NeetCode44 {
             return answer;
         }
 
-        private void dfs(TreeNode node, int k) {
-            if (answer != -1 || node == null) return;
-
-            dfs(node.left, k);
+        private boolean dfs(TreeNode node, int k) {
+            if (node == null) return false;
+            if (dfs(node.left, k)) return true;
             count++;
             if (count == k) {
                 answer = node.val;
+                return true;
             }
-            dfs(node.right, k);
 
-
+            return dfs(node.right, k);
         }
     }
 
