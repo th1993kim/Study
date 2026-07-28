@@ -5,12 +5,12 @@ import java.util.PriorityQueue;
 public class NeetCode50 {
     static class Solution {
         public int[][] kClosest(int[][] points, int k) {
-            PriorityQueue<Point> queue = new PriorityQueue<>(
-                    (a, b) -> Integer.compare(dis(b.x, b.y), dis(a.x, a.y))
+            PriorityQueue<int[]> queue = new PriorityQueue<>(
+                    (a, b) -> Integer.compare(dis(b), dis(a))
             );
 
             for (int i=0; i < points.length; i++) {
-                queue.add(new Point(points[i][0], points[i][1]));
+                queue.add(new int[]{points[i][0], points[i][1]});
                 if (queue.size() > k) {
                     queue.poll();
                 }
@@ -20,9 +20,7 @@ public class NeetCode50 {
 
             int index = 0;
             while(!queue.isEmpty()) {
-                Point point = queue.poll();
-                answer[index][0] = point.x;
-                answer[index][1] = point.y;
+                answer[index] = queue.poll();
                 index++;
             }
 
@@ -39,8 +37,8 @@ public class NeetCode50 {
             }
         }
 
-        private int dis(int a, int b) {
-            return Math.abs(a * a) + Math.abs(b * b);
+        private int dis(int[] point) {
+            return point[0] * point[0] + point[1] * point[1];
         }
     }
 
