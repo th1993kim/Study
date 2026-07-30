@@ -7,27 +7,27 @@ public class NeetCode55 {
 
     static class Solution {
 
-        List<List<Integer>> answer = new ArrayList<>();
+        List<List<Integer>> answer;
 
         public List<List<Integer>> combinationSum(int[] nums, int target) {
-            dfs(0, 0, 0, new ArrayList<>(), nums, target);
+            answer = new ArrayList<>();
+            dfs(0, 0, new ArrayList<>(), nums, target);
             return answer;
         }
 
-        private void dfs(int length, int index, int sum, List<Integer> subSet, int[] nums, int target) {
+        private void dfs(int index, int sum, List<Integer> subSet, int[] nums, int target) {
             if (sum == target) {
                 answer.add(new ArrayList<>(subSet));
+                return;
             }
             if (sum > target) {
                 return;
             }
 
-            for (int i = 0; i < nums.length; i++) {
-                if (index <= i) {
-                    subSet.add(nums[i]);
-                    dfs(length + 1, i, sum + nums[i], subSet, nums, target);
-                    subSet.remove(subSet.size() - 1);
-                }
+            for (int i = index; i < nums.length; i++) {
+                subSet.add(nums[i]);
+                dfs(i, sum + nums[i], subSet, nums, target);
+                subSet.remove(subSet.size() - 1);
             }
         }
     }
