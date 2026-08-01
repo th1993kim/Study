@@ -6,33 +6,26 @@ public class NeetCode72 {
 
     static class Solution {
         public List<Integer> partitionLabels(String s) {
-
-            Map<Character, Integer> chMap = new HashMap<>();
+            int[] charEndArr = new int[26];
 
             for (int i = 0; i < s.length(); i++) {
-                chMap.put(s.charAt(i), chMap.getOrDefault(s.charAt(i), 0) + 1);
+                charEndArr[s.charAt(i) - 'a'] = i;
             }
-
-            Set<Character> set = new HashSet<>();
 
             List<Integer> answer = new ArrayList<>();
-            int count = 0;
-            for (int i = 0; i < s.length(); i++) {
-                char word = s.charAt(i);
-                set.add(word);
-                int remainCount = chMap.get(word) - 1;
-                chMap.put(word, remainCount);
-                count++;
-                if (remainCount == 0) set.remove(word);
 
-                if (set.isEmpty()) {
-                    answer.add(count);
-                    count = 0;
+            int start = 0;
+            int end = 0;
+
+            for (int i = 0; i < s.length(); i++) {
+                end = Math.max(end, charEndArr[s.charAt(i) - 'a']);
+
+                if (end == i) {
+                    answer.add(end - start + 1);
+                    start = i + 1;
                 }
             }
-
             return answer;
-
         }
     }
 
