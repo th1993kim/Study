@@ -10,70 +10,52 @@ public class NeetCode79 {
 
         private final int[][] move = new int[][]{{0, 1}, {-1, 0}, {0, -1}, {1, 0}};
         public List<List<Integer>> pacificAtlantic(int[][] heights) {
-            Queue<int[]> pacificQueue = new ArrayDeque<>();
-            Queue<int[]> atlanticQueue = new ArrayDeque<>();
-            boolean[][] pacificArr = new boolean[heights.length][heights[0].length];
-            boolean[][] atlanArr = new boolean[heights.length][heights[0].length];
+            boolean[][] pacific = new boolean[heights.length][heights[0].length];
+            boolean[][] atlan = new boolean[heights.length][heights[0].length];
+
+            for (int i = 0; i < heights[0].length; i++) {
+                dfs(0, i, pacific, heights);
+                dfs(heights.length -1, i, atlan, heights);
+            }
+
+            for (int i = 0; i < heights.length; i++) {
+                dfs(i, 0, pacific, heights);
+                dfs(i, heights[0].length - 1, atlan, heights);
+            }
+
 
             List<List<Integer>> answer = new ArrayList<>();
 
-            for (int i = 0; i < heights[0].length; i++) {
-                pacificArr[0][i] = true;
-                pacificQueue.offer(new int[]{0, i});
-                atlanArr[heights.length - 1][i] = true;
-                atlanticQueue.offer(new int[]{heights.length - 1, i});
-
-            }
-
-            for (int i = 1; i < heights.length; i++) {
-                pacificArr[i][0] = true;
-                pacificQueue.offer(new int[]{i, 0});
-            }
-
-            for (int i = 0; i < heights.length - 1; i++) {
-                atlanArr[i][heights[0].length - 1] = true;
-                atlanticQueue.offer(new int[]{i, heights[0].length - 1});
-            }
-
-
-            bfs(heights, pacificQueue, pacificArr);
-            bfs(heights, atlanticQueue, atlanArr);
-
             for (int i = 0; i < heights.length; i++) {
                 for (int j = 0; j < heights[0].length; j++) {
-                    if (pacificArr[i][j] && atlanArr[i][j]) answer.add(List.of(i, j));
+                    if (pacific[i][j] && atlan[i][j]) answer.add(List.of(i, j));
                 }
             }
 
             return answer;
         }
 
-        private void bfs(int[][] heights, Queue<int[]> atlanticQueue, boolean[][] atlanArr) {
-            while (!atlanticQueue.isEmpty()) {
-                int size = atlanticQueue.size();
+        private void dfs(int y, int x, boolean[][] checker, int[][] heights) {
+            if (checker[y][x]) return;
 
-                for (int i = 0; i < size; i++) {
-                    int[] current = atlanticQueue.poll();
-                    int y = current[0];
-                    int x = current[1];
+            checker[y][x] = true;
 
-                    for (int j = 0; j < move.length; j++) {
-                        int ny = y + move[j][0];
-                        int nx = x + move[j][1];
+            for (int i = 0; i < move.length; i++) {
+                int ny = y + move[i][0];
+                int nx = x + move[i][1];
 
-                        if (nx < 0 || ny < 0
-                                || ny > heights.length - 1 || nx > heights[0].length -1
-                                || atlanArr[ny][nx])
-                            continue;
-
-                        if (heights[ny][nx] >= heights[y][x]) {
-                            atlanArr[ny][nx] = true;
-                            atlanticQueue.offer(new int[]{ny, nx});
-                        }
-                    }
+                if (ny < 0 || nx < 0
+                        || ny > heights.length - 1 || nx > heights[0].length - 1
+                        || heights[ny][nx] < heights[y][x]
+                ) {
+                    continue;
                 }
+
+                if (checker[ny][nx]) continue;
+                dfs(ny, nx, checker, heights);
             }
         }
+
     }
 
 }
