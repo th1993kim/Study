@@ -1,9 +1,6 @@
 package Y2026M07;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class NeetCode83 {
     static class Solution {
@@ -28,21 +25,27 @@ public class NeetCode83 {
             for (int i = 0; i < n; i++) {
                 if (!visited[i]) {
                     countComponents++;
-                    dfs(i, visited, graph);
+                    bfs(i, visited, graph);
                 }
             }
 
             return countComponents;
         }
 
-        private void dfs(int current, boolean[] visited, List<Integer>[] graph) {
-            visited[current] = true;
+        private void bfs(int start, boolean[] visited, List<Integer>[] graph) {
 
-            for (Integer child : graph[current]) {
-                if (!visited[child]) {
-                    dfs(child, visited, graph);
+            Queue<Integer> queue = new ArrayDeque<>();
+            queue.offer(start);
+            visited[start] = true;
+            while(!queue.isEmpty()) {
+                Integer current = queue.poll();
+                for (Integer next : graph[current]) {
+                    if (visited[next]) continue;
+                    visited[next] = true;
+                    queue.offer(next);
                 }
             }
+
         }
     }
 
