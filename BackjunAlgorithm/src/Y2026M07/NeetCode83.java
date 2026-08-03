@@ -8,7 +8,7 @@ public class NeetCode83 {
         public int countComponents(int n, int[][] edges) {
             int[] group = new int[n];
 
-
+            int countComponents = n;
 
             for (int i = 0; i < n; i ++) {
                 group[i] = i;
@@ -17,15 +17,10 @@ public class NeetCode83 {
             for (int i = 0; i < edges.length; i++) {
                 int pre = edges[i][0];
                 int back = edges[i][1];
-                union(pre, back, group);
+                if (union(pre, back, group)) countComponents--;
             }
 
-            Set<Integer> set = new HashSet<>();
-            for (int i = 0; i < group.length; i++) {
-                set.add(find(i, group));
-            }
-
-            return set.size();
+            return countComponents;
         }
 
         private int find(int a, int[] group) {
@@ -34,12 +29,13 @@ public class NeetCode83 {
             return group[a] = find(group[a], group);
         }
 
-        private void union(int a, int b, int[] group) {
+        private boolean union(int a, int b, int[] group) {
             int rootA = find(a, group);
             int rootB = find(b, group);
-            if (rootA == rootB) return;
+            if (rootA == rootB) return false;
 
             group[rootB] = rootA;
+            return true;
         }
     }
 
