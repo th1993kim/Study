@@ -1,41 +1,48 @@
 package Y2026M07;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class NeetCode83 {
     static class Solution {
         public int countComponents(int n, int[][] edges) {
-            int[] group = new int[n];
+            boolean[] visited = new boolean[n];
 
-            int countComponents = n;
-
-            for (int i = 0; i < n; i ++) {
-                group[i] = i;
+            List<Integer>[] graph = new ArrayList[n];
+            for (int i = 0; i < n; i++) {
+                graph[i] = new ArrayList<>();
             }
+
+            int countComponents = 0;
 
             for (int i = 0; i < edges.length; i++) {
                 int pre = edges[i][0];
                 int back = edges[i][1];
-                if (union(pre, back, group)) countComponents--;
+
+                graph[pre].add(back);
+                graph[back].add(pre);
+            }
+
+            for (int i = 0; i < n; i++) {
+                if (!visited[i]) {
+                    countComponents++;
+                    dfs(i, visited, graph);
+                }
             }
 
             return countComponents;
         }
 
-        private int find(int a, int[] group) {
-            if (group[a] == a) return a;
+        private void dfs(int current, boolean[] visited, List<Integer>[] graph) {
+            visited[current] = true;
 
-            return group[a] = find(group[a], group);
-        }
-
-        private boolean union(int a, int b, int[] group) {
-            int rootA = find(a, group);
-            int rootB = find(b, group);
-            if (rootA == rootB) return false;
-
-            group[rootB] = rootA;
-            return true;
+            for (Integer child : graph[current]) {
+                if (!visited[child]) {
+                    dfs(child, visited, graph);
+                }
+            }
         }
     }
 
