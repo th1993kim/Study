@@ -6,53 +6,54 @@ public class NeetCode97 {
     static class Solution {
         public int findCheapestPrice(int n, int[][] flights, int src, int dst, int k) {
 
-            Map<Integer, List<int[]>> dir = new HashMap<>();
+            Map<Integer, List<int[]>> graph = new HashMap<>();
 
-            for (int i = 0; i < flights.length; i++) {
-                int node = flights[i][0];
-                dir.computeIfAbsent(node, key -> new ArrayList<>())
-                        .add(new int[]{flights[i][1], flights[i][2]});
+            for (int[] flight : flights) {
+                graph.computeIfAbsent(flight[0], key -> new ArrayList<>())
+                        .add(new int[]{flight[1], flight[2]});
             }
 
-            int[] dist = new int[n];
-            for (int i = 0; i < dist.length; i++) {
-                dist[i] = Integer.MAX_VALUE;
-            }
-            PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> {
-                if (a[2] == b[2]) return a[1] - b[1];
+            int[][] dist = new int[n][k+2];
 
-                return a[2] - b[2];
-            });
+            for (int[] row : dist) {
+                Arrays.fill(row, Integer.MAX_VALUE);
+            }
+
+            PriorityQueue<int[]> pq = new PriorityQueue<>(Comparator.comparingInt(a -> a[1]));
+
+            dist[src][0] = 0;
 
             pq.offer(new int[]{src, 0, 0});
 
-
             while(!pq.isEmpty()) {
                 int[] current = pq.poll();
-                int currentNode = current[0];
-                int currentDist = current[1];
-                int currentCnt = current[2];
+                int node = current[0];
+                int cost = current[1];
+                int count = current[2];
 
-                if (currentDist > dist[currentNode] || currentCnt > k) continue;
+                if (node == dst) return cost;
 
-                dist[currentNode] = Math.min(currentDist, dist[currentNode]);
+                if (count == k + 1) continue;
 
-                List<int[]> nextList = dir.get(currentNode);
+                if (cost > dist[node][count]) continue;
+
+                List<int[]> nextList = graph.get(node);
+
                 if (nextList == null) continue;
 
                 for (int[] next : nextList) {
                     int nextNode = next[0];
-                    int nextValue = next[1];
-                    int nextCount = currentCnt + (nextNode == dst ? 0 : 1);
-
-                    if (dist[nextNode] > currentDist + nextValue && nextCount <= k) {
-
-                        pq.offer(new int[]{nextNode, currentDist + nextValue, nextCount});
+                    int nextCost = cost + next[1];
+                    int nextCount = count + 1;
+                    if (nextCost < dist[nextNode][nextCount]) {
+                        dist[nextNode][nextCount] = nextCost;
+                        pq.offer(new int[]{nextNode, nextCost, nextCount});
                     }
                 }
             }
 
-            return dist[dst] == Integer.MAX_VALUE ? -1 : dist[dst];
+            return -1;
+
         }
     }
 
