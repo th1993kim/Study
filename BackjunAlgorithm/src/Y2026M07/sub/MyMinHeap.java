@@ -39,7 +39,7 @@ public class MyMinHeap {
             throw new IndexOutOfBoundsException();
         }
         int poll = heap[0];
-
+        PriorityQueue<Integer> queue = new PriorityQueue<>();
         heap[0] = heap[--size];
         int current = 0;
         while (current < size) {
