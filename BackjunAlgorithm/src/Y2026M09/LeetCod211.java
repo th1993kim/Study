@@ -4,28 +4,26 @@ public class LeetCod211 {
     static class Solution {
         public int numTrees(int n) {
 
-            return count(n);
+            int[] dp = new int[n + 1];
+            dp[0] = 1;
+            dp[1] = 1;
+            // 여기서 dp는 n일때 완성할 수 있는 트리의 개수
+            // dp[2] = dp[0] * dp[1] , dp[1] * dp[0]
+            // dp[2] = 2 * dp[0] * dp[1]
+            // dp[3] = dp[0] * dp[2] +  dp[1] * dp[1] + dp[2] * dp[0]
+            // dp 점화식을 만들때 간단하게 만들수 있지 않다. N을 작게하면서부터 만들어나아간다면 쉽게 답에 도달할 수 있다.
+
+            for (int nodeCount = 2; nodeCount <= n; nodeCount++) {
+                // root가 2로 변경될것까지 생각하면 아래와같은 범위가 될 수 있다.
+                for (int root = 1; root <= nodeCount; root++) {
+                    int left = root - 1;
+                    int right = nodeCount - root;
+                    dp[nodeCount] += dp[left] * dp[right];
+                }
+            }
+            return dp[n];
         }
 
-        private int count(int n) {
-            if (n == 0 || n == 1) {
-                return 1;
-            }
 
-            int result = 0;
-            //노드가 1부터 N까지 존재하므로 모든 노드들을 도는 반복문을 시행한다.
-            for (int i = 1; i <= n; i++) {
-                // i를 선택한 기준으로 좌측은 i-1개의 노드가 존재한다.
-                int left = i - 1;
-                // i를 선택한 기준으로 우측은 n-i개만큼 존재한다.
-                int right = n - i;
-                int leftCount = count(left);
-                int rightCount = count(right);
-
-                result += leftCount * rightCount;
-            }
-
-            return result;
-        }
     }
 }
