@@ -4,29 +4,24 @@ public class LeetCode209 {
     static class Solution {
         int answer;
         public int minSubArrayLen(int target, int[] nums) {
-            // 숫자를 낮게 정렬하고
-            // 반복문을 돌면서 숫자하나를 고정으로 하고 그 이후 DFS를 통해 숫자들을 선택하면서 target에 도달하는지 체크한다.
-            // 길이가 가장 짧은 값이 나올때마다 갱신해준다.
+            // 부분배열을 구하는 문제, 부분배열을 구할때는 Sliding Window, Two Pointer, Prefix Sum을 이용할 수 있다.
+            // Sliding Window 기법을 사용하려면 모든 변화가 예측이 가능해야할 수 있다. (ex.모든 값이 양수)
 
+
+            int left = 0;
+            int answer = Integer.MAX_VALUE;
             int n = nums.length;
-            answer = Integer.MAX_VALUE;
-            for (int i = 0; i < n; i++) {
-                dfs(i + 1, 1, nums[i], nums, target);
+            int sum = 0;
+            for (int right = 0; right < n; right++) {
+                sum += nums[right];
+                while(sum >= target) {
+                    answer = Math.min(answer, right - left + 1);
+                    sum -= nums[left];
+                    left++;
+                }
             }
 
             return answer == Integer.MAX_VALUE ? 0 : answer;
-        }
-
-        void dfs(int index, int count, int sum, int[] nums, int target) {
-
-            if (sum >= target) {
-                answer = Math.min(answer, count);
-                return;
-            }
-            if (index >= nums.length) {
-                return;
-            }
-            dfs(index + 1, count + 1, sum + nums[index], nums, target);
         }
     }
 }
