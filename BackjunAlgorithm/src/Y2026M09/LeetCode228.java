@@ -24,22 +24,22 @@ public class LeetCode228 {
             // list누적방식은 백트래킹으로 하는방법이 지금 당장 생각난다.
             // 만약 노드가 null이면 아무것도 해주지 않고 진행한다.
             List<List<Integer>> answer  = new ArrayList<>();
-            dfs(0, targetSum, root, new ArrayList<>(), answer);
+            dfs(targetSum, root, new ArrayList<>(), answer);
 
             return answer;
         }
 
-        void dfs(int sum, int target, TreeNode node, List<Integer> subArr, List<List<Integer>> answer) {
+        void dfs(int remain, TreeNode node, List<Integer> subArr, List<List<Integer>> answer) {
             if (node == null) return;
 
-            int currentSum = sum + node.val;
+            int newRemain = remain - node.val;
             subArr.add(node.val);
-            if (node.left == null && node.right == null && currentSum == target) answer.add(new ArrayList<>(subArr));
+            if (node.left == null && node.right == null && newRemain == 0) answer.add(new ArrayList<>(subArr));
 
-            dfs(currentSum, target, node.left, subArr, answer);
-            dfs(currentSum, target, node.right, subArr, answer);
+            dfs(newRemain, node.left, subArr, answer);
+            dfs(newRemain, node.right, subArr, answer);
 
-            subArr.remove(subArr.size() - 1);
+            subArr.removeLast();
         }
     }
 }
