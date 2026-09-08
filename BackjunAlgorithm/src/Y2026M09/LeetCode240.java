@@ -4,17 +4,40 @@ public class LeetCode240 {
 
     static class Solution {
 
-        static final int[][] DIRECTION = new int[][] {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
         public int numIslands(char[][] grid) {
-            // 1을 만나는 지점 도달시 DFS를 통해 모두 0으로 만들어주고,  answer 에 값을 하나씩 누적시키는 방안
+            int n = grid.length;
+            int m = grid[0].length;
+
+            int[] group = new int[n*m];
+            int[] size = new int[n*m];
 
             int answer = 0;
 
-            for (int i = 0; i < grid.length; i++) {
-                for (int j = 0; j < grid[0].length; j++) {
-                    if (grid[i][j] == '1') {
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < m; j++) {
+                    int index = i * m + j;
+                    if (grid[i][j] == '1'){
+                        group[index] = index;
+                        size[index]++;
                         answer++;
-                        dfs(i, j, grid);
+                    } else {
+                        group[index] = -1;
+                    }
+                }
+            }
+
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < m; j++) {
+                    if (grid[i][j] == '0') continue;
+
+                    int current = i * m + j;
+
+                    if (j + 1 < m && grid[i][j+1] == '1') {
+                        if (union(current, current + 1, group, size)) answer--;
+                    }
+
+                    if (i + 1 < n && grid[i+1][j] == '1') {
+                        if (union(current, (i+1) * m + j, group, size)) answer--;
                     }
                 }
             }
@@ -22,17 +45,30 @@ public class LeetCode240 {
             return answer;
         }
 
-        void dfs(int y, int x, char[][] grid) {
-            if (y < 0 || x < 0 || y >= grid.length || x >= grid[0].length) return;
-            if (grid[y][x] == '0') return;
-
-            grid[y][x] = '0';
-
-            for (int i = 0; i < DIRECTION.length; i++) {
-                int ny = y + DIRECTION[i][0];
-                int nx = x + DIRECTION[i][1];
-                dfs(ny, nx, grid);
+        int find(int a, int[] group) {
+            int groupNo = group[a];
+            if (groupNo == a) {
+                return groupNo;
             }
+
+            return group[a] = find(groupNo, group);
         }
+
+        boolean union(int a, int b, int[] group, int[] size) {
+            int groupA = find(a, group);
+            int groupB = find(b, group);
+            if (groupA == groupB) return false;
+
+            if (size[groupA] < size[groupB]) {
+                group[groupA] = groupB;
+                size[groupB] += size[groupA];
+            } else {
+                group[groupB] = groupA;
+                size[groupA] += size[groupB];
+            }
+
+            return true;
+        }
+
     }
 }
