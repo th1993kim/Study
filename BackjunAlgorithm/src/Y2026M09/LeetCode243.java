@@ -19,37 +19,25 @@ public class LeetCode243 {
             ListNode dummy = new ListNode();
             dummy.next = head;
             ListNode previousLeft = dummy;
-            ListNode leftNode = previousLeft.next;
-            ListNode rightNode = leftNode;
-            for (int i = 0; i < right - left; i++) {
-                rightNode = rightNode.next;
-            }
-
-            for (int i = 0; i < left - 1; i++) {
+            for (int i = 1; i < left; i++) {
                 previousLeft = previousLeft.next;
-                leftNode = leftNode.next;
-                rightNode = rightNode.next;
             }
 
-            ListNode afterRight = rightNode.next;
-
-            reverse(leftNode, right-left);
-
-            previousLeft.next = rightNode;
-            leftNode.next = afterRight;
-
-            return dummy.next;
-        }
-
-        void reverse(ListNode node, int count) {
-            ListNode prev = node;
-            ListNode current = node.next;
-            for (int i = 0; i < count; i++) {
+            ListNode prev = null;
+            ListNode current = previousLeft.next;
+            ListNode leftNode = current;
+            for (int i = 0; i <= right - left; i++) { // 현재노드부터 시작 4-2의 경우 2,3,4를 시행해야한다. 그러므로 포함관계가된다.
                 ListNode next = current.next;
                 current.next = prev;
+
                 prev = current;
                 current = next;
             }
+
+            previousLeft.next = prev;
+            leftNode.next = current;
+
+            return dummy.next;
         }
     }
 }
